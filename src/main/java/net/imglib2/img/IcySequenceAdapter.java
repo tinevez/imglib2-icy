@@ -12,6 +12,7 @@ import net.imglib2.img.basictypeaccess.array.IntArray;
 import net.imglib2.img.basictypeaccess.array.ShortArray;
 import net.imglib2.img.planar.PlanarImg;
 import net.imglib2.img.planar.PlanarImgs;
+import net.imglib2.type.numeric.RealType;
 import net.imglib2.type.numeric.integer.ByteType;
 import net.imglib2.type.numeric.integer.IntType;
 import net.imglib2.type.numeric.integer.ShortType;
@@ -84,7 +85,7 @@ public class IcySequenceAdapter
 
 	}
 
-	public static final PlanarImg< ?, ? > wrap( final Sequence sequence )
+	public static final Img< ? extends RealType< ? > > wrap( final Sequence sequence )
 	{
 		switch ( sequence.getDataType_() )
 		{
@@ -107,11 +108,11 @@ public class IcySequenceAdapter
 		case LONG:
 		case ULONG:
 		default:
-			throw new RuntimeException( "Only 8, 16, float or double supported!" );
+			throw new RuntimeException( "Only byte, int, short, float or double supported!" );
 		}
 	}
 
-	public static PlanarImg< ByteType, ByteArray > wrapByte( final Sequence sequence )
+	public static Img< ByteType > wrapByte( final Sequence sequence )
 	{
 		final PlanarImg< ByteType, ByteArray > img = PlanarImgs.bytes( getSqueezedDims( sequence ) );
 		int no = 0;
@@ -127,7 +128,7 @@ public class IcySequenceAdapter
 		return img;
 	}
 
-	public static PlanarImg< DoubleType, DoubleArray > wrapDouble( final Sequence sequence )
+	public static Img< DoubleType > wrapDouble( final Sequence sequence )
 	{
 		final PlanarImg< DoubleType, DoubleArray > img = PlanarImgs.doubles( getSqueezedDims( sequence ) );
 		int no = 0;
@@ -143,7 +144,7 @@ public class IcySequenceAdapter
 		return img;
 	}
 
-	public static final PlanarImg< FloatType, FloatArray > wrapFloat( final Sequence sequence )
+	public static final Img< FloatType > wrapFloat( final Sequence sequence )
 	{
 		final PlanarImg< FloatType, FloatArray > img = PlanarImgs.floats( getSqueezedDims( sequence ) );
 		int no = 0;
@@ -159,7 +160,7 @@ public class IcySequenceAdapter
 		return img;
 	}
 
-	public static PlanarImg< IntType, IntArray > wrapInt( final Sequence sequence )
+	public static Img< IntType > wrapInt( final Sequence sequence )
 	{
 		final PlanarImg< IntType, IntArray > img = PlanarImgs.ints( getSqueezedDims( sequence ) );
 		int no = 0;
@@ -175,7 +176,7 @@ public class IcySequenceAdapter
 		return img;
 	}
 
-	public static PlanarImg< ShortType, ShortArray > wrapShort( final Sequence sequence )
+	public static Img< ShortType > wrapShort( final Sequence sequence )
 	{
 		final PlanarImg< ShortType, ShortArray > img = PlanarImgs.shorts( getSqueezedDims( sequence ) );
 		int no = 0;
@@ -191,7 +192,7 @@ public class IcySequenceAdapter
 		return img;
 	}
 
-	public static final PlanarImg< UnsignedByteType, ByteArray > wrapUnsignedByte( final Sequence sequence )
+	public static final Img< UnsignedByteType > wrapUnsignedByte( final Sequence sequence )
 	{
 		final PlanarImg< UnsignedByteType, ByteArray > img = PlanarImgs.unsignedBytes( getSqueezedDims( sequence ) );
 		int no = 0;
@@ -207,7 +208,7 @@ public class IcySequenceAdapter
 		return img;
 	}
 
-	public static PlanarImg< UnsignedIntType, IntArray > wrapUnsignedInt( final Sequence sequence )
+	public static Img< UnsignedIntType > wrapUnsignedInt( final Sequence sequence )
 	{
 		final PlanarImg< UnsignedIntType, IntArray > img = PlanarImgs.unsignedInts( getSqueezedDims( sequence ) );
 		int no = 0;
@@ -223,7 +224,7 @@ public class IcySequenceAdapter
 		return img;
 	}
 
-	public static PlanarImg< UnsignedShortType, ShortArray > wrapUnsignedShort( final Sequence sequence )
+	public static Img< UnsignedShortType > wrapUnsignedShort( final Sequence sequence )
 	{
 		final PlanarImg< UnsignedShortType, ShortArray > img = PlanarImgs.unsignedShorts( getSqueezedDims( sequence ) );
 		int no = 0;
