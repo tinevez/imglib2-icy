@@ -1,10 +1,8 @@
 package net.imglib2.img.display.icy;
 
 import icy.image.IcyBufferedImage;
-import icy.image.colormodel.IcyColorModel;
 import icy.sequence.Sequence;
 import icy.sequence.VolumetricImage;
-import icy.type.DataType;
 
 import java.util.ArrayList;
 import java.util.TreeMap;
@@ -19,12 +17,16 @@ import net.imglib2.img.array.ArrayImg;
 import net.imglib2.img.array.ArrayImgFactory;
 import net.imglib2.img.basictypeaccess.array.ArrayDataAccess;
 import net.imglib2.type.NativeType;
+import net.imglib2.type.Type;
+import net.imglib2.type.numeric.integer.UnsignedByteType;
 import net.imglib2.type.numeric.integer.UnsignedShortType;
 import net.imglib2.type.numeric.real.FloatType;
+import net.imglib2.util.Util;
+import net.imglib2.view.Views;
 
-public class VirtualSequence< S > extends Sequence
+public class VirtualSequence extends Sequence
 {
-	private final IterableIntervalProjector2D< S, ? > projector;
+	private final IterableIntervalProjector2D< ?, ? > projector;
 
 	private final IcyBufferedImage image;
 
@@ -54,7 +56,8 @@ public class VirtualSequence< S > extends Sequence
 	 * CONSTRUCTOR
 	 */
 
-	public VirtualSequence( final RandomAccessibleInterval< S > source, final DataType dataType )
+	@SuppressWarnings( { "rawtypes", "unchecked" } )
+	public VirtualSequence( final RandomAccessibleInterval< ? > source )
 	{
 		super();
 
@@ -74,30 +77,37 @@ public class VirtualSequence< S > extends Sequence
 		maxT = ( int ) source.max( 3 );
 		sizeT = ( int ) source.dimension( 3 );
 
-		NativeType type;
-		final Converter< ? super S, NativeType > converter;
-		final IcyColorModel colorModel;
-
-		switch ( dataType )
+		final Type rawType = ( Type ) Util.getTypeFromInterval( source );
+		if ( !( rawType instanceof NativeType ) )
 		{
-		case FLOAT:
-			type = new FloatType();
-			converter = new RealFloatConverter();
-			break;
-		case UBYTE:
-			type = new UnsignedShortType();
+ throw new IllegalArgumentException( "Non-native types are unsupported, got : " + rawType );
+		}
+
+		NativeType type = ( NativeType ) rawType;
+		final Converter< ?, NativeType > converter;
+
+		if ( type instanceof UnsignedByteType )
+		{
+			type = new UnsignedByteType();
 			converter = new RealUnsignedByteConverter( 0, 255 );
-			break;
-		case USHORT:
+		}
+		else if ( type instanceof UnsignedShortType )
+		{
 			type = new UnsignedShortType();
 			converter = new RealUnsignedShortConverter( 0, 65535 );
-			break;
-		case UNDEFINED:
-		default:
-			throw new IllegalArgumentException( "Unsupported data type: " + dataType );
 		}
+		else if ( type instanceof FloatType )
+		{
+			type = new FloatType();
+			converter = new RealFloatConverter();
+		}
+		else
+		{
+			throw new IllegalArgumentException( "Unsupported data type: " + type);
+		}
+
 		final ArrayImg img = new ArrayImgFactory().create( new long[] { sizeX, sizeY }, type );
-		this.projector = new IterableIntervalProjector2D( 0, 1, source, img, converter );
+		this.projector = new IterableIntervalProjector2D( 0, 1, Views.isZeroMin( source ) ? source : Views.zeroMin( source ), img, converter );
 		projector.map();
 
 		final Object data = ( ( ArrayDataAccess< ? > ) img.update( null ) ).getCurrentStorageArray();
@@ -114,7 +124,6 @@ public class VirtualSequence< S > extends Sequence
 	@Override
 	public IcyBufferedImage getImage( final int t, final int z )
 	{
-
 		if ( previousT != t || previousZ != z )
 		{
 			projector.setPosition( z, 2 );
