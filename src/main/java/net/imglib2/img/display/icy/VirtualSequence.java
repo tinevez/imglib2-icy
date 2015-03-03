@@ -46,6 +46,10 @@ public class VirtualSequence< S > extends Sequence
 
 	private int previousZ = -1;
 
+	private final int sizeX;
+
+	private final int sizeY;
+
 	/*
 	 * CONSTRUCTOR
 	 */
@@ -57,8 +61,8 @@ public class VirtualSequence< S > extends Sequence
 		// Mono channel for now.
 		// Right now I suppose I have a XYZT image with each dim of size > 1.
 
-		final int sizeX = ( int ) source.dimension( 0 );
-		final int sizeY = ( int ) source.dimension( 1 );
+		sizeX = ( int ) source.dimension( 0 );
+		sizeY = ( int ) source.dimension( 1 );
 
 		// TODO
 		minZ = ( int ) source.min( 2 );
@@ -96,34 +100,9 @@ public class VirtualSequence< S > extends Sequence
 		this.projector = new IterableIntervalProjector2D( 0, 1, source, img, converter );
 		projector.map();
 
-//		image = new IcyBufferedImage( sizeX, sizeY, IcyColorModel.createInstance( 1, dataType ) );
-//		image.setDataXY( 0, ( ( ArrayDataAccess< ? > ) img.update( null ) ).getCurrentStorageArray() );
-
 		final Object data = ( ( ArrayDataAccess< ? > ) img.update( null ) ).getCurrentStorageArray();
 		image = new IcyBufferedImage( sizeX, sizeY, data, false );
-
-//		try
-//		{
-//			SwingUtilities.invokeAndWait( new Runnable()
-//			{
-//
-//				@Override
-//				public void run()
-//				{
-//					new Viewer( new Sequence( image ) ); // DEBUG
-//				}
-//			} );
-//		}
-//		catch ( final InterruptedException e )
-//		{
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		catch ( final InvocationTargetException e )
-//		{
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		onImageAdded( image );
 
 		volumetricImage = new VirtualVolumetricImage();
 	}
@@ -131,28 +110,29 @@ public class VirtualSequence< S > extends Sequence
 	/*
 	 * METHODS
 	 */
-//
-//	@Override
-//	public IcyBufferedImage getImage( final int t, final int z )
-//	{
-//		if ( previousT != t || previousZ != z )
-//		{
-//			projector.setPosition( z, 0 );
-//			projector.setPosition( t, 1 );
-//			projector.map();
-//			previousT = t;
-//			previousZ = z;
-//		}
-//		return image;
-//	}
+
+	@Override
+	public IcyBufferedImage getImage( final int t, final int z )
+	{
+
+		if ( previousT != t || previousZ != z )
+		{
+			projector.setPosition( z, 2 );
+			projector.setPosition( t, 3 );
+			projector.map();
+			previousT = t;
+			previousZ = z;
+		}
+		return image;
+	}
 
 	@Override
 	public VolumetricImage getVolumetricImage( final int t )
 	{
 		if ( t != previousT )
 		{
-			projector.setPosition( t, 1 );
-//			projector.map();
+			projector.setPosition( t, 3 );
+			projector.map();
 			previousT = t;
 		}
 		return volumetricImage;
@@ -174,6 +154,18 @@ public class VirtualSequence< S > extends Sequence
 	public int getSizeZ( final int t )
 	{
 		return sizeZ;
+	}
+
+	@Override
+	public int getSizeX()
+	{
+		return sizeX;
+	}
+
+	@Override
+	public int getSizeY()
+	{
+		return sizeY;
 	}
 
 	@Override
@@ -216,7 +208,7 @@ public class VirtualSequence< S > extends Sequence
 		{
 			if ( previousZ != z )
 			{
-				projector.setPosition( z, 0 );
+				projector.setPosition( z, 2 );
 				projector.map();
 				previousZ = z;
 			}
@@ -277,3 +269,4 @@ public class VirtualSequence< S > extends Sequence
 	}
 
 }
+
