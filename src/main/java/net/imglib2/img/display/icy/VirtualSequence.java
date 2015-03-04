@@ -31,7 +31,7 @@ public class VirtualSequence extends Sequence
 
 	public static enum DimensionArrangement
 	{
-
+		XY( false, false, false, 0, 0, 0, 0, 0 ),
 		XYC( true, false, false, 0, 0, 0, 0, 0 ),
 		XYZ( false, true, false, 0, 2, 2, 0, 0 ),
 		XYT( false, false, true, 0, 0, 0, 2, 2 ),
