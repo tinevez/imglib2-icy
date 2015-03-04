@@ -12,6 +12,7 @@ import net.imglib2.img.basictypeaccess.array.IntArray;
 import net.imglib2.img.basictypeaccess.array.ShortArray;
 import net.imglib2.img.planar.PlanarImg;
 import net.imglib2.img.planar.PlanarImgs;
+import net.imglib2.type.numeric.NumericType;
 import net.imglib2.type.numeric.RealType;
 import net.imglib2.type.numeric.integer.ByteType;
 import net.imglib2.type.numeric.integer.IntType;
@@ -85,26 +86,27 @@ public class IcySequenceAdapter
 
 	}
 
-	public static final Img< ? extends RealType< ? > > wrap( final Sequence sequence )
+	@SuppressWarnings( "unchecked" )
+	public static final < T extends NumericType< T > & RealType< T >> Img< T > wrap( final Sequence sequence )
 	{
 		switch ( sequence.getDataType_() )
 		{
 		case BYTE:
-			return wrapByte( sequence );
+			return ( Img< T > ) wrapByte( sequence );
 		case INT:
-			return wrapInt( sequence );
+			return ( Img< T > ) wrapInt( sequence );
 		case SHORT:
-			return wrapShort( sequence );
+			return ( Img< T > ) wrapShort( sequence );
 		case UBYTE:
-			return wrapUnsignedByte( sequence );
+			return ( Img< T > ) wrapUnsignedByte( sequence );
 		case UINT:
-			return wrapUnsignedInt( sequence );
+			return ( Img< T > ) wrapUnsignedInt( sequence );
 		case USHORT:
-			return wrapUnsignedShort( sequence );
+			return ( Img< T > ) wrapUnsignedShort( sequence );
 		case DOUBLE:
-			return wrapDouble( sequence );
+			return ( Img< T > ) wrapDouble( sequence );
 		case FLOAT:
-			return wrapFloat( sequence );
+			return ( Img< T > ) wrapFloat( sequence );
 		case LONG:
 		case ULONG:
 		default:
