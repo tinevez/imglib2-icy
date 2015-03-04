@@ -26,6 +26,52 @@ import net.imglib2.view.Views;
 
 public class VirtualSequence extends Sequence
 {
+
+	public static enum DimensionArrangement
+	{
+
+		XYC( true, false, false, 0, 0, 0 ),
+		XYZ( false, true, false, 0, 2, 0 ),
+		XYT( false, false, true, 0, 0, 2 ),
+		XYCT( true, false, true, 2, 0, 3 ),
+		XYZT( false, true, true, 0, 2, 3 ),
+		XYCZT( true, true, true, 2, 3, 4 );
+
+		private final boolean hasZ;
+
+		private final int dimZ;
+
+		private final boolean hasT;
+
+		private final int dimT;
+
+		private final boolean hasC;
+
+		private final int dimC;
+
+		private DimensionArrangement( final boolean hasC, final boolean hasZ, final boolean hasT, final int dimC, final int dimZ, final int dimT )
+		{
+			this.hasC = hasC;
+			this.hasZ = hasZ;
+			this.hasT = hasT;
+			this.dimC = dimC;
+			this.dimZ = dimZ;
+			this.dimT = dimT;
+		}
+
+		public int numDimensions()
+		{
+			int ndims = 2;
+			if ( hasC )
+				ndims++;
+			if ( hasZ )
+				ndims++;
+			if ( hasT )
+				ndims++;
+			return ndims;
+		}
+	}
+
 	private final IterableIntervalProjector2D< ?, ? > projector;
 
 	private final IcyBufferedImage image;
@@ -52,36 +98,54 @@ public class VirtualSequence extends Sequence
 
 	private final int sizeY;
 
+	private final DimensionArrangement arrangement;
+
 	/*
 	 * CONSTRUCTOR
 	 */
 
 	@SuppressWarnings( { "rawtypes", "unchecked" } )
-	public VirtualSequence( final RandomAccessibleInterval< ? > source )
+	public VirtualSequence( final RandomAccessibleInterval< ? > source, final DimensionArrangement arrangement )
 	{
-		super();
-
-		// Mono channel for now.
-		// Right now I suppose I have a XYZT image with each dim of size > 1.
+		super( source.toString() + " - " + arrangement );
+		this.arrangement = arrangement;
+		
+		if (source.numDimensions() != arrangement.numDimensions()) {
+			throw new IllegalArgumentException( "Source does not have the same dimensionality that of the declared dimension arrangment. Expected " 
+				+ arrangement.numDimensions() + " but got " + source.numDimensions() + "." );
+		}
 
 		sizeX = ( int ) source.dimension( 0 );
 		sizeY = ( int ) source.dimension( 1 );
 
-		// TODO
-		minZ = ( int ) source.min( 2 );
-		maxZ = ( int ) source.max( 2 );
-		sizeZ = ( int ) source.dimension( 2 );
+		if ( arrangement.hasZ )
+		{
+			minZ = ( int ) source.min( arrangement.dimZ );
+			maxZ = ( int ) source.max( arrangement.dimZ );
+			sizeZ = ( int ) source.dimension( arrangement.dimZ );
+		}
+		else
+		{
+			minZ = 0;
+			maxZ = 0;
+			sizeZ = 0;
+		}
 
-		// TODO
-		minT = ( int ) source.min( 3 );
-		maxT = ( int ) source.max( 3 );
-		sizeT = ( int ) source.dimension( 3 );
+		if ( arrangement.hasT )
+		{
+			minT = ( int ) source.min( arrangement.dimT );
+			maxT = ( int ) source.max( arrangement.dimT );
+			sizeT = ( int ) source.dimension( arrangement.dimT );
+		}
+		else
+		{
+			minT = 0;
+			maxT = 0;
+			sizeT = 0;
+		}
 
 		final Type rawType = ( Type ) Util.getTypeFromInterval( source );
-		if ( !( rawType instanceof NativeType ) )
-		{
- throw new IllegalArgumentException( "Non-native types are unsupported, got : " + rawType );
-		}
+		if ( !( rawType instanceof NativeType ) ) { throw new IllegalArgumentException( "Non-native types are unsupported, got : " + rawType ); }
 
 		NativeType type = ( NativeType ) rawType;
 		final Converter< ?, NativeType > converter;
@@ -103,7 +167,7 @@ public class VirtualSequence extends Sequence
 		}
 		else
 		{
-			throw new IllegalArgumentException( "Unsupported data type: " + type);
+			throw new IllegalArgumentException( "Unsupported data type: " + type );
 		}
 
 		final ArrayImg img = new ArrayImgFactory().create( new long[] { sizeX, sizeY }, type );
@@ -126,8 +190,8 @@ public class VirtualSequence extends Sequence
 	{
 		if ( previousT != t || previousZ != z )
 		{
-			projector.setPosition( z, 2 );
-			projector.setPosition( t, 3 );
+			projector.setPosition( z, arrangement.dimZ );
+			projector.setPosition( t, arrangement.dimT );
 			projector.map();
 			previousT = t;
 			previousZ = z;
@@ -140,7 +204,7 @@ public class VirtualSequence extends Sequence
 	{
 		if ( t != previousT )
 		{
-			projector.setPosition( t, 3 );
+			projector.setPosition( t, arrangement.dimT );
 			projector.map();
 			previousT = t;
 		}
@@ -217,7 +281,7 @@ public class VirtualSequence extends Sequence
 		{
 			if ( previousZ != z )
 			{
-				projector.setPosition( z, 2 );
+				projector.setPosition( z, arrangement.dimZ );
 				projector.map();
 				previousZ = z;
 			}
@@ -278,4 +342,3 @@ public class VirtualSequence extends Sequence
 	}
 
 }
-
