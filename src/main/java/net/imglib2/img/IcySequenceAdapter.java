@@ -86,27 +86,27 @@ public class IcySequenceAdapter
 
 	}
 
-	@SuppressWarnings( "unchecked" )
+	@SuppressWarnings( { "unchecked", "rawtypes" } )
 	public static final < T extends NumericType< T > & RealType< T >> Img< T > wrap( final Sequence sequence )
 	{
 		switch ( sequence.getDataType_() )
 		{
 		case BYTE:
-			return ( Img< T > ) wrapByte( sequence );
+			return ( Img ) wrapByte( sequence );
 		case INT:
-			return ( Img< T > ) wrapInt( sequence );
+			return ( Img ) wrapInt( sequence );
 		case SHORT:
-			return ( Img< T > ) wrapShort( sequence );
+			return ( Img ) wrapShort( sequence );
 		case UBYTE:
-			return ( Img< T > ) wrapUnsignedByte( sequence );
+			return ( Img ) wrapUnsignedByte( sequence );
 		case UINT:
-			return ( Img< T > ) wrapUnsignedInt( sequence );
+			return ( Img ) wrapUnsignedInt( sequence );
 		case USHORT:
-			return ( Img< T > ) wrapUnsignedShort( sequence );
+			return ( Img ) wrapUnsignedShort( sequence );
 		case DOUBLE:
-			return ( Img< T > ) wrapDouble( sequence );
+			return ( Img ) wrapDouble( sequence );
 		case FLOAT:
-			return ( Img< T > ) wrapFloat( sequence );
+			return ( Img ) wrapFloat( sequence );
 		case LONG:
 		case ULONG:
 		default:
