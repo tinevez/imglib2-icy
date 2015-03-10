@@ -21,6 +21,13 @@
       <id>imagej.public</id>
       <url>http://maven.imagej.net/content/groups/public</url>
     </repository>
+    
+    <!-- Icy local repository -->
+    <repository>
+    	<id>project.local</id>
+    	<name>project</name>
+    	<url>file:${project.basedir}/icy</url>
+    </repository>
   </repositories>
 
   <dependencies>
@@ -30,11 +37,18 @@
       <artifactId>imglib2</artifactId>
     </dependency>
 
-	<!-- OME dependencies -->
+    <!-- OME dependencies -->
+    <dependency>
+      <groupId>ome</groupId>
+      <artifactId>bioformats_package</artifactId>
+      <version>5.0.4</version>
+    </dependency>
+ 
+	<!-- Icy dependencies -->
 	<dependency>
-		<groupId>ome</groupId>
-		<artifactId>bioformats_package</artifactId>
-		<version>5.0.4</version>
+		<groupId>org.bioimageanalysis</groupId>
+		<artifactId>icy</artifactId>
+		<version>1.5.4.2</version>
 	</dependency>
 
     <!-- Test scope dependencies -->
