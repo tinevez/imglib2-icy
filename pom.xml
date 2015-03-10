@@ -29,10 +29,18 @@
     	<url>file:${project.basedir}/icy</url>
     </repository>
     
+    <!--  VTK wrapper local repository -->
     <repository>
     	<id>vtk.local</id>
     	<name>vtk</name>
     	<url>file:${project.basedir}/vtk</url>
+    </repository>
+    
+    <!--  Insubstantial local repository -->
+    <repository>
+    	<id>insubstantial.local</id>
+    	<name>insubstantial</name>
+    	<url>file:${project.basedir}/insubstantial</url>
     </repository>
     
   </repositories>
@@ -49,6 +57,18 @@
     	<groupId>ome</groupId>
     	<artifactId>formats-api</artifactId>
     </dependency>
+     <dependency>
+    	<groupId>ome</groupId>
+    	<artifactId>formats-bsd</artifactId>
+    </dependency>
+    <dependency>
+    	<groupId>ome</groupId>
+    	<artifactId>formats-gpl</artifactId>
+    </dependency>
+    <dependency>
+    	<groupId>ome</groupId>
+    	<artifactId>formats-common</artifactId>
+    </dependency>
     
 	<!-- Icy dependencies -->
 	<dependency>
@@ -56,46 +76,46 @@
 		<artifactId>icy</artifactId>
 		<version>1.5.4.2</version>
 	</dependency>
-	
 	<dependency>
 		<groupId>org.bioimageanalysis</groupId>
 		<artifactId>icy-resources</artifactId>
 		<version>1.5.4.2</version>
 	</dependency>
-	   
 	<dependency>
 		<groupId>kitware.community</groupId>
 		<artifactId>vtk</artifactId>
 		<version>6.1</version>
 	</dependency>
-    
     <dependency>
     	<groupId>com.github.insubstantial</groupId>
     	<artifactId>substance-swingx</artifactId>
     	<version>7.3</version>
     </dependency>
-    
+     <dependency>
+    	<groupId>com.github.insubstantial</groupId>
+    	<artifactId>substance</artifactId>
+    	<version>7.3-destroyer</version>
+    </dependency>
+    <dependency>
+    	<groupId>com.github.insubstantial</groupId>
+    	<artifactId>flamingo</artifactId>
+    	<version>7.3-destroyer</version>
+    </dependency>
+     <dependency>
+    	<groupId>com.github.insubstantial</groupId>
+    	<artifactId>laf-widget</artifactId>
+    	<version>7.3</version>
+    </dependency>
+    <dependency>
+    	<groupId>com.github.insubstantial</groupId>
+    	<artifactId>laf-plugin</artifactId>
+    	<version>7.3</version>
+    </dependency>
     <dependency>
     	<groupId>org.schwering</groupId>
     	<artifactId>irclib</artifactId>
     	<version>1.10</version>
     </dependency>
-    
-    <dependency>
-    	<groupId>ome</groupId>
-    	<artifactId>formats-bsd</artifactId>
-    </dependency>
-    
-    <dependency>
-    	<groupId>ome</groupId>
-    	<artifactId>formats-gpl</artifactId>
-    </dependency>
-    
-    <dependency>
-    	<groupId>ome</groupId>
-    	<artifactId>formats-common</artifactId>
-    </dependency>
- 
     
     <!-- Test scope dependencies -->
     <dependency>
@@ -103,15 +123,7 @@
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
-    
-    <dependency>
-      <groupId>net.imglib2</groupId>
-      <artifactId>imglib2</artifactId>
-      <version>2.0.1</version>
-      <classifier>tests</classifier>
-      <scope>test</scope>
-    </dependency>
-
+   
   </dependencies>
 
   <build>
