@@ -39,11 +39,10 @@
 
     <!-- OME dependencies -->
     <dependency>
-      <groupId>ome</groupId>
-      <artifactId>bioformats_package</artifactId>
-      <version>5.0.4</version>
+    	<groupId>ome</groupId>
+    	<artifactId>formats-api</artifactId>
     </dependency>
- 
+    
 	<!-- Icy dependencies -->
 	<dependency>
 		<groupId>org.bioimageanalysis</groupId>
@@ -64,7 +63,6 @@
       <classifier>tests</classifier>
       <scope>test</scope>
     </dependency>
-
 
   </dependencies>
 
