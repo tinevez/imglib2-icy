@@ -1,11 +1,11 @@
-package net.imglib2.img.display.icy;
+package plugins.tinevez.imglib2icy;
 
 import icy.image.IcyBufferedImage;
+import icy.plugin.abstract_.Plugin;
+import icy.plugin.interface_.PluginLibrary;
 import icy.sequence.Sequence;
 import net.imglib2.Interval;
-import net.imglib2.img.IcySequenceAdapter;
 import net.imglib2.img.Img;
-import net.imglib2.img.display.icy.VirtualSequence.DimensionArrangement;
 import net.imglib2.type.numeric.NumericType;
 import net.imglib2.type.numeric.RealType;
 import net.imglib2.type.numeric.integer.ByteType;
@@ -16,8 +16,9 @@ import net.imglib2.type.numeric.integer.UnsignedIntType;
 import net.imglib2.type.numeric.integer.UnsignedShortType;
 import net.imglib2.type.numeric.real.DoubleType;
 import net.imglib2.type.numeric.real.FloatType;
+import plugins.tinevez.imglib2icy.VirtualSequence.DimensionArrangement;
 
-public class IcyFunctions
+public class IcyFunctions extends Plugin implements PluginLibrary
 {
 	public static < T extends NumericType< T > & RealType< T >> Sequence wrap( final Img< T > img )
 	{

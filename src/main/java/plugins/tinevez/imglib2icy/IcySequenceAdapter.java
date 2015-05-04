@@ -1,10 +1,11 @@
-package net.imglib2.img;
+package plugins.tinevez.imglib2icy;
 
 import icy.image.IcyBufferedImage;
 import icy.sequence.Sequence;
 
 import java.util.Arrays;
 
+import net.imglib2.img.Img;
 import net.imglib2.img.basictypeaccess.array.ByteArray;
 import net.imglib2.img.basictypeaccess.array.DoubleArray;
 import net.imglib2.img.basictypeaccess.array.FloatArray;

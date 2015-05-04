@@ -1,4 +1,4 @@
-package net.imglib2.img.display.icy;
+package plugins.tinevez.imglib2icy;
 
 import icy.image.IcyBufferedImage;
 import icy.sequence.Sequence;
