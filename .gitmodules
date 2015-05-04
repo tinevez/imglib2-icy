@@ -13,3 +13,6 @@
 [submodule "imglib2-ui"]
 	path = imglib2-ui
 	url = git@github.com:imglib/imglib2-ui.git
+[submodule "imglib2-algorithm-fft"]
+	path = imglib2-algorithm-fft
+	url = git@github.com:imglib/imglib2-algorithm-fft.git
