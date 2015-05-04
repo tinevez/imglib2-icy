@@ -12,7 +12,3 @@
 hs_err_pid*
 /target/
 
-# Eclipse stuff
-.classpath
-.project
-.settings/
