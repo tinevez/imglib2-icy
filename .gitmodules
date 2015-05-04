@@ -7,3 +7,6 @@
 [submodule "imglib2-algorithm-gpl"]
 	path = imglib2-algorithm-gpl
 	url = git@github.com:imglib/imglib2-algorithm-gpl.git
+[submodule "imglib2-roi"]
+	path = imglib2-roi
+	url = git@github.com:imglib/imglib2-roi.git
