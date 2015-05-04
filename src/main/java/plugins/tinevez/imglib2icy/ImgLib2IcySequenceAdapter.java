@@ -24,7 +24,7 @@ import net.imglib2.type.numeric.integer.UnsignedShortType;
 import net.imglib2.type.numeric.real.DoubleType;
 import net.imglib2.type.numeric.real.FloatType;
 
-public class IcySequenceAdapter
+public class ImgLib2IcySequenceAdapter
 {
 
 	private static final long[] getDims( final Sequence sequence )
@@ -243,6 +243,6 @@ public class IcySequenceAdapter
 		return img;
 	}
 
-	private IcySequenceAdapter()
+	private ImgLib2IcySequenceAdapter()
 	{}
 }

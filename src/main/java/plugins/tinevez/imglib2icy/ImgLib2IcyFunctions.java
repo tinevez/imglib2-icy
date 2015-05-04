@@ -18,7 +18,7 @@ import net.imglib2.type.numeric.real.DoubleType;
 import net.imglib2.type.numeric.real.FloatType;
 import plugins.tinevez.imglib2icy.VirtualSequence.DimensionArrangement;
 
-public class IcyFunctions extends Plugin implements PluginLibrary
+public class ImgLib2IcyFunctions extends Plugin implements PluginLibrary
 {
 	public static < T extends NumericType< T > & RealType< T >> Sequence wrap( final Img< T > img )
 	{
@@ -89,7 +89,7 @@ public class IcyFunctions extends Plugin implements PluginLibrary
 
 	public static < T extends NumericType< T > & RealType< T >> Img< T > wrap( final Sequence sequence )
 	{
-		return IcySequenceAdapter.wrap( sequence );
+		return ImgLib2IcySequenceAdapter.wrap( sequence );
 	}
 
 	public static < T extends NumericType< T > & RealType< T >> Img< T > wrap( final IcyBufferedImage image )
@@ -99,46 +99,46 @@ public class IcyFunctions extends Plugin implements PluginLibrary
 
 	public static Img< ByteType > wrapByte( final Sequence sequence )
 	{
-		return IcySequenceAdapter.wrapByte( sequence );
+		return ImgLib2IcySequenceAdapter.wrapByte( sequence );
 	}
 
 
 	public static Img< DoubleType > wrapDouble( final Sequence sequence )
 	{
-		return IcySequenceAdapter.wrapDouble( sequence );
+		return ImgLib2IcySequenceAdapter.wrapDouble( sequence );
 	}
 
 	public static Img< FloatType > wrapFloat( final Sequence sequence )
 	{
-		return IcySequenceAdapter.wrapFloat( sequence );
+		return ImgLib2IcySequenceAdapter.wrapFloat( sequence );
 	}
 
 	public static Img< IntType > wrapInt( final Sequence sequence )
 	{
-		return IcySequenceAdapter.wrapInt( sequence );
+		return ImgLib2IcySequenceAdapter.wrapInt( sequence );
 	}
 
 	public static Img< ShortType > wrapShort( final Sequence sequence )
 	{
-		return IcySequenceAdapter.wrapShort( sequence );
+		return ImgLib2IcySequenceAdapter.wrapShort( sequence );
 	}
 
 	public static Img< UnsignedByteType > wrapUnsignedByte( final Sequence sequence )
 	{
-		return IcySequenceAdapter.wrapUnsignedByte( sequence );
+		return ImgLib2IcySequenceAdapter.wrapUnsignedByte( sequence );
 	}
 
 	public static Img< UnsignedIntType > wrapUnsignedInt( final Sequence sequence )
 	{
-		return IcySequenceAdapter.wrapUnsignedInt( sequence );
+		return ImgLib2IcySequenceAdapter.wrapUnsignedInt( sequence );
 	}
 
 	public static Img< UnsignedShortType > wrapUnsignedShort( final Sequence sequence )
 	{
-		return IcySequenceAdapter.wrapUnsignedShort( sequence );
+		return ImgLib2IcySequenceAdapter.wrapUnsignedShort( sequence );
 	}
 
-	private IcyFunctions()
+	private ImgLib2IcyFunctions()
 	{}
 
 }
