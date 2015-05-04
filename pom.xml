@@ -1,144 +1,39 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-
-  <parent>
-    <groupId>net.imglib2</groupId>
-    <artifactId>pom-imglib2</artifactId>
-    <version>5.1.1</version>
-    <relativePath />
-  </parent>
-
-  <artifactId>imglib2-icy</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-
-  <name>ImgLib2 Icy</name>
-  <description>ImgLib2 wrappers for Icy sequences.</description>
-
-  <repositories>
-    <!-- NB: for SciJava dependencies -->
-    <repository>
-      <id>imagej.public</id>
-      <url>http://maven.imagej.net/content/groups/public</url>
-    </repository>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
     
-    <!-- Icy local repository -->
-    <repository>
-    	<id>icy.local</id>
-    	<name>icy</name>
-    	<url>file:${project.basedir}/icy</url>
-    </repository>
-    
-    <!--  VTK wrapper local repository -->
-    <repository>
-    	<id>vtk.local</id>
-    	<name>vtk</name>
-    	<url>file:${project.basedir}/vtk</url>
-    </repository>
-    
-    <!--  Insubstantial local repository -->
-    <repository>
-    	<id>insubstantial.local</id>
-    	<name>insubstantial</name>
-    	<url>file:${project.basedir}/insubstantial</url>
-    </repository>
-    
-  </repositories>
+	<groupId>net.imglib2</groupId>
+	<artifactId>imglib2-icy</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>ImgLib2 Icy</name>
+	<description>ImgLib2 wrappers for Icy sequences.</description>
 
-  <dependencies>
-    <!-- ImgLib2 dependencies -->
-    <dependency>
-      <groupId>net.imglib2</groupId>
-      <artifactId>imglib2</artifactId>
-    </dependency>
-
-    <!-- OME dependencies -->
-    <dependency>
-    	<groupId>ome</groupId>
-    	<artifactId>formats-api</artifactId>
-    </dependency>
-     <dependency>
-    	<groupId>ome</groupId>
-    	<artifactId>formats-bsd</artifactId>
-    </dependency>
-    <dependency>
-    	<groupId>ome</groupId>
-    	<artifactId>formats-gpl</artifactId>
-    </dependency>
-    <dependency>
-    	<groupId>ome</groupId>
-    	<artifactId>formats-common</artifactId>
-    </dependency>
-    
-	<!-- Icy dependencies -->
-	<dependency>
-		<groupId>org.bioimageanalysis</groupId>
-		<artifactId>icy</artifactId>
-		<version>1.5.4.2</version>
-	</dependency>
-	<dependency>
-		<groupId>org.bioimageanalysis</groupId>
-		<artifactId>icy-resources</artifactId>
-		<version>1.5.4.2</version>
-	</dependency>
-	<dependency>
-		<groupId>kitware.community</groupId>
-		<artifactId>vtk</artifactId>
-		<version>6.1</version>
-	</dependency>
-    <dependency>
-    	<groupId>com.github.insubstantial</groupId>
-    	<artifactId>substance-swingx</artifactId>
-    	<version>7.3</version>
-    </dependency>
-     <dependency>
-    	<groupId>com.github.insubstantial</groupId>
-    	<artifactId>substance</artifactId>
-    	<version>7.3-destroyer</version>
-    </dependency>
-    <dependency>
-    	<groupId>com.github.insubstantial</groupId>
-    	<artifactId>flamingo</artifactId>
-    	<version>7.3-destroyer</version>
-    </dependency>
-     <dependency>
-    	<groupId>com.github.insubstantial</groupId>
-    	<artifactId>laf-widget</artifactId>
-    	<version>7.3</version>
-    </dependency>
-    <dependency>
-    	<groupId>com.github.insubstantial</groupId>
-    	<artifactId>laf-plugin</artifactId>
-    	<version>7.3</version>
-    </dependency>
-    <dependency>
-    	<groupId>org.schwering</groupId>
-    	<artifactId>irclib</artifactId>
-    	<version>1.10</version>
-    </dependency>
-    
-    <!-- Test scope dependencies -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
-    </dependency>
-   
-  </dependencies>
-
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-          <archive>
-            <manifest>
-              <packageName>net.imglib2.img</packageName>
-            </manifest>
-          </archive>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-
+	<modules>
+		<module>imglib2</module>
+		<module>imglib2-algorithm</module>
+		<module>imglib2-algorithm-gpl</module>
+		<module>imglib2-algorithm-fft</module>
+		<module>imglib2-realtransform</module>
+		<module>imglib2-roi</module>
+		<module>imglib2-ui</module>
+	</modules>
+	
+	<build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.5</source>
+                        <target>1.5</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+	
 </project>
