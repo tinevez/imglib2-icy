@@ -138,6 +138,71 @@ public class ImgLib2IcyFunctions extends Plugin implements PluginLibrary
 		return ImgLib2IcySequenceAdapter.wrapUnsignedShort( sequence );
 	}
 
+	public static DimensionArrangement getDimensionArrangement( final Sequence sequence )
+	{
+		final int sizeC = sequence.getSizeC();
+		final int sizeZ = sequence.getSizeZ();
+		final int sizeT = sequence.getSizeT();
+
+		final boolean hasC = sizeC > 1;
+		final boolean hasZ = sizeZ > 1;
+		final boolean hasT = sizeT > 1;
+
+		if ( hasC )
+		{
+			if ( hasZ )
+			{
+				if ( hasT )
+				{
+					return DimensionArrangement.XYCZT;
+				}
+				else
+				{
+					return DimensionArrangement.XYCZ;
+				}
+			}
+			else
+			{
+				// No Z.
+				if ( hasT )
+				{
+					return DimensionArrangement.XYCT;
+				}
+				else
+				{
+					return DimensionArrangement.XYC;
+				}
+			}
+		}
+		else
+		{
+			// No C.
+			if ( hasZ )
+			{
+				if ( hasT )
+				{
+					return DimensionArrangement.XYZT;
+				}
+				else
+				{
+					return DimensionArrangement.XYZ;
+				}
+			}
+			else
+			{
+				// No Z.
+				if ( hasT )
+				{
+					return DimensionArrangement.XYT;
+				}
+				else
+				{
+					return DimensionArrangement.XY;
+				}
+			}
+		}
+	}
+
 	private ImgLib2IcyFunctions()
 	{}
 
