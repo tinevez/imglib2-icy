@@ -1,0 +1,3 @@
+[submodule "imglib2"]
+	path = imglib2
+	url = git@github.com:imglib/imglib2.git
