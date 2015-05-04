@@ -16,3 +16,6 @@
 [submodule "imglib2-algorithm-fft"]
 	path = imglib2-algorithm-fft
 	url = git@github.com:imglib/imglib2-algorithm-fft.git
+[submodule "imglib2-algorithm"]
+	path = imglib2-algorithm
+	url = git@github.com:imglib/imglib2-algorithm.git
