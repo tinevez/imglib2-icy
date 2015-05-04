@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="MacRoman" standalone="no"?>
+<jardesc>
+    <jar path="imglib2-icy/export/ImgLib2-Icy.jar"/>
+    <options buildIfNeeded="true" compress="false" descriptionLocation="/imglib2-icy/jar-export-description.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="true" exportOutputFolder="false">
+        <javaElement handleIdentifier="=imglib2-roi/src\/main\/java"/>
+        <javaElement handleIdentifier="=imglib2-algorithm-fft/src\/main\/java"/>
+        <javaElement handleIdentifier="=imglib2-icy/src\/main\/java"/>
+        <javaElement handleIdentifier="=imglib2-realtransform/src\/main\/java"/>
+        <javaElement handleIdentifier="=imglib2/src\/main\/java"/>
+        <javaElement handleIdentifier="=imglib2-algorithm/src\/main\/java"/>
+        <file path="/imglib2-icy/README.md"/>
+        <javaElement handleIdentifier="=imglib2-ui/src\/main\/java"/>
+        <javaElement handleIdentifier="=imglib2-ui/src\/main\/resources"/>
+        <javaElement handleIdentifier="=imglib2-algorithm-gpl/src\/main\/java"/>
+    </selectedElements>
+</jardesc>
