@@ -79,6 +79,57 @@ public class VirtualSequence extends Sequence
 				ndims++;
 			return ndims;
 		}
+
+		public DimensionArrangement dropC()
+		{
+			switch ( this )
+			{
+			case XYC:
+				return XY;
+			case XYCT:
+				return XYT;
+			case XYCZ:
+				return XYZ;
+			case XYCZT:
+				return XYZT;
+			default:
+				return this;
+			}
+		}
+
+		public DimensionArrangement dropZ()
+		{
+			switch ( this )
+			{
+			case XYZ:
+				return XY;
+			case XYCZ:
+				return XYC;
+			case XYZT:
+				return XYT;
+			case XYCZT:
+				return XYCT;
+			default:
+				return this;
+			}
+		}
+
+		public DimensionArrangement dropT()
+		{
+			switch ( this )
+			{
+			case XYT:
+				return XY;
+			case XYCT:
+				return XYC;
+			case XYZT:
+				return XYT;
+			case XYCZT:
+				return XYCZ;
+			default:
+				return this;
+			}
+		}
 	}
 
 	private final IcyBufferedImage image;
@@ -117,10 +168,10 @@ public class VirtualSequence extends Sequence
 	{
 		super( source.toString() + " - " + arrangement );
 		this.arrangement = arrangement;
-		
+
 		if (source.numDimensions() != arrangement.numDimensions()) {
-			throw new IllegalArgumentException( "Source does not have the same dimensionality that of the declared dimension arrangment. Expected " 
-				+ arrangement.numDimensions() + " but got " + source.numDimensions() + "." );
+			throw new IllegalArgumentException( "Source does not have the same dimensionality that of the declared dimension arrangment. Expected "
+					+ arrangement.numDimensions() + " but got " + source.numDimensions() + "." );
 		}
 
 		sizeX = ( int ) source.dimension( 0 );

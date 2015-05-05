@@ -71,7 +71,7 @@ public class ImgLib2IcySequenceAdapter
 	 * <li>dz in um.
 	 * <li>dt in s.
 	 * </ol>
-	 * 
+	 *
 	 * @param sequence
 	 * @return a new, 4-elements, <code>double</code> array.
 	 */

@@ -100,7 +100,6 @@ public class ImgLib2IcyFunctions
 		return ImgLib2IcySequenceAdapter.wrapByte( sequence );
 	}
 
-
 	public static Img< DoubleType > wrapDouble( final Sequence sequence )
 	{
 		return ImgLib2IcySequenceAdapter.wrapDouble( sequence );
