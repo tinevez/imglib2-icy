@@ -1,39 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-                             http://maven.apache.org/maven-v4_0_0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    
-	<groupId>net.imglib2</groupId>
-	<artifactId>imglib2-icy</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
-	<name>ImgLib2 Icy</name>
-	<description>ImgLib2 wrappers for Icy sequences.</description>
+    <parent>
+		<artifactId>pom-icy</artifactId>
+        <groupId>org.bioimageanalysis.icy</groupId>
+        <version>2.1.5</version>
+	</parent>
 
-	<modules>
-		<module>imglib2</module>
-		<module>imglib2-algorithm</module>
-		<module>imglib2-algorithm-gpl</module>
-		<module>imglib2-algorithm-fft</module>
-		<module>imglib2-realtransform</module>
-		<module>imglib2-roi</module>
-		<module>imglib2-ui</module>
-	</modules>
+    <artifactId>imglib2-icy</artifactId>
+    <version>6.2.0</version>
+
+    <name>ImgLib2 Icy</name>
+    <description>ImgLib2 wrappers for Icy sequences.
+	</description>
 	
-	<build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <configuration>
-                        <source>1.5</source>
-                        <target>1.5</target>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
-	
+	<properties>
+		<artifact-to-include>imglib2</artifact-to-include>
+	</properties>
+
+    <dependencies>
+		<dependency>
+			<groupId>net.imglib2</groupId>
+			<artifactId>imglib2</artifactId>
+		  <version>6.2.0</version>
+		</dependency>
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>icy</id>
+            <url>https://icy-nexus.pasteur.fr/repository/Icy/</url>
+        </repository>
+		<repository>
+		  <id>scijava.public</id>
+		  <url>https://maven.scijava.org/content/groups/public</url>
+		</repository>
+    </repositories>
 </project>
