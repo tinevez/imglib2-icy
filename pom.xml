@@ -17,7 +17,7 @@
     </description>
 
     <properties>
-        <artifact-to-include>imglib2</artifact-to-include>
+        <artifact-to-extract>imglib2</artifact-to-extract>
     </properties>
 
     <dependencies>
