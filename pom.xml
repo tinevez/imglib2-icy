@@ -31,7 +31,7 @@
     <repositories>
         <repository>
             <id>icy</id>
-            <url>https://icy-nexus.pasteur.fr/repository/Icy/</url>
+            <url>https://icy-nexus.pasteur.fr/</url>
         </repository>
         <repository>
             <id>scijava.public</id>
