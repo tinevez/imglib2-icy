@@ -2,14 +2,13 @@ package plugins.tinevez.imglib2icy;
 
 import icy.gui.dialog.MessageDialog;
 import icy.sequence.Sequence;
-
-import java.util.List;
-
 import net.imglib2.img.Img;
 import net.imglib2.type.numeric.integer.UnsignedByteType;
 import plugins.adufour.ezplug.EzPlug;
 import plugins.adufour.ezplug.EzVarBoolean;
 import plugins.tinevez.imglib2icy.VirtualSequence.DimensionArrangement;
+
+import java.util.List;
 
 public class ImgLib2SequenceSplitter extends EzPlug
 {
