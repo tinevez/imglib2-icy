@@ -19,7 +19,6 @@ import net.imglib2.type.Type;
 import net.imglib2.type.numeric.integer.UnsignedByteType;
 import net.imglib2.type.numeric.integer.UnsignedShortType;
 import net.imglib2.type.numeric.real.FloatType;
-import net.imglib2.util.Util;
 import net.imglib2.view.Views;
 
 import java.util.ArrayList;
@@ -168,10 +167,9 @@ public class VirtualSequence extends Sequence
 		super( source.toString() + " - " + arrangement );
 		this.arrangement = arrangement;
 
-		if (source.numDimensions() != arrangement.numDimensions()) {
-			throw new IllegalArgumentException( "Source does not have the same dimensionality that of the declared dimension arrangment. Expected "
-					+ arrangement.numDimensions() + " but got " + source.numDimensions() + "." );
-		}
+		if ( source.numDimensions() != arrangement.numDimensions() )
+		{ throw new IllegalArgumentException( "Source does not have the same dimensionality that of the declared dimension arrangment. Expected "
+				+ arrangement.numDimensions() + " but got " + source.numDimensions() + "." ); }
 
 		sizeX = ( int ) source.dimension( 0 );
 		sizeY = ( int ) source.dimension( 1 );
@@ -207,8 +205,9 @@ public class VirtualSequence extends Sequence
 			sizeC = 1;
 		}
 
-		final Type rawType = ( Type ) Util.getTypeFromInterval( source );
-		if ( !( rawType instanceof NativeType ) ) { throw new IllegalArgumentException( "Non-native types are unsupported, got : " + rawType ); }
+		final Type rawType = ( Type ) source.getType();
+		if ( !( rawType instanceof NativeType ) )
+		{ throw new IllegalArgumentException( "Non-native types are unsupported, got : " + rawType ); }
 
 		final NativeType rt = ( NativeType ) rawType;
 		final NativeType type;
@@ -287,7 +286,7 @@ public class VirtualSequence extends Sequence
 		}
 		else
 		{
-			final ArrayImg img = new ArrayImgFactory().create( new long[] { sizeX, sizeY }, type );
+			final ArrayImg img = new ArrayImgFactory( type ).create( sizeX, sizeY );
 			final IterableIntervalProjector2D projector = new IterableIntervalProjector2D( 0, 1, rai, img, converter );
 			projector.map();
 			projectors[ 0 ] = projector;
@@ -296,7 +295,6 @@ public class VirtualSequence extends Sequence
 			image = new IcyBufferedImage( sizeX, sizeY, data, signed );
 		}
 		onImageAdded( image );
-
 
 		volumetricImage = new VirtualVolumetricImage();
 	}
