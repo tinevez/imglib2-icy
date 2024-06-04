@@ -4,10 +4,6 @@ import icy.image.IcyBufferedImage;
 import icy.sequence.Sequence;
 import icy.sequence.VolumetricImage;
 import icy.type.DataType;
-
-import java.util.ArrayList;
-import java.util.TreeMap;
-
 import net.imglib2.RandomAccessibleInterval;
 import net.imglib2.converter.Converter;
 import net.imglib2.converter.RealFloatConverter;
@@ -26,10 +22,13 @@ import net.imglib2.type.numeric.real.FloatType;
 import net.imglib2.util.Util;
 import net.imglib2.view.Views;
 
+import java.util.ArrayList;
+import java.util.TreeMap;
+
 public class VirtualSequence extends Sequence
 {
 
-	public static enum DimensionArrangement
+	public enum DimensionArrangement
 	{
 		XY( false, false, false, 0, 0, 0, 0, 0 ),
 		XYC( true, false, false, 0, 0, 0, 0, 0 ),
@@ -154,7 +153,7 @@ public class VirtualSequence extends Sequence
 
 	private final DimensionArrangement arrangement;
 
-	private int sizeC;
+	private final int sizeC;
 
 	@SuppressWarnings( "rawtypes" )
 	private final IterableIntervalProjector2D[] projectors;

@@ -14,3 +14,9 @@ target/
 .settings/
 .classpath
 old_pom.xml
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr

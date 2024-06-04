@@ -38,7 +38,7 @@ public class ImgLib2Test< T extends RealType< T >> extends PluginActionable impl
 						+ "<ul>"
 						+ "<li>of size " + Util.printInterval( img ) + "</li>"
 						+ "<li>of dimensions " + dimArrangement + "</li>"
-						+ "<li>of type " + img.firstElement().getClass() + ""
+						+ "<li>of type " + img.firstElement().getClass() + "</li>"
 						+ "</ul>"
 						+ "</html>",
 						MessageDialog.PLAIN_MESSAGE );

@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-		<artifactId>pom-icy</artifactId>
+        <artifactId>pom-icy</artifactId>
         <groupId>org.bioimageanalysis.icy</groupId>
-        <version>2.1.5</version>
-	</parent>
+        <version>2.1.6</version>
+    </parent>
 
     <artifactId>imglib2-icy</artifactId>
-    <version>6.2.0</version>
+    <version>7.0.3</version>
 
     <name>ImgLib2 Icy</name>
     <description>ImgLib2 wrappers for Icy sequences.
-	</description>
-	
-	<properties>
-		<artifact-to-include>imglib2</artifact-to-include>
-	</properties>
+    </description>
+
+    <properties>
+        <artifact-to-include>imglib2</artifact-to-include>
+    </properties>
 
     <dependencies>
-		<dependency>
-			<groupId>net.imglib2</groupId>
-			<artifactId>imglib2</artifactId>
-		  <version>6.2.0</version>
-		</dependency>
+        <dependency>
+            <groupId>net.imglib2</groupId>
+            <artifactId>imglib2</artifactId>
+            <version>7.0.3</version>
+        </dependency>
     </dependencies>
 
     <repositories>
@@ -33,9 +33,9 @@
             <id>icy</id>
             <url>https://icy-nexus.pasteur.fr/repository/Icy/</url>
         </repository>
-		<repository>
-		  <id>scijava.public</id>
-		  <url>https://maven.scijava.org/content/groups/public</url>
-		</repository>
+        <repository>
+            <id>scijava.public</id>
+            <url>https://maven.scijava.org/content/groups/public</url>
+        </repository>
     </repositories>
 </project>

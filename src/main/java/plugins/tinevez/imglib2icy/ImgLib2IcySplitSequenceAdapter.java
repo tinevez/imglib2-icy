@@ -2,30 +2,20 @@
 package plugins.tinevez.imglib2icy;
 
 import icy.sequence.Sequence;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import net.imglib2.img.Img;
-import net.imglib2.img.basictypeaccess.array.ByteArray;
-import net.imglib2.img.basictypeaccess.array.DoubleArray;
-import net.imglib2.img.basictypeaccess.array.FloatArray;
-import net.imglib2.img.basictypeaccess.array.IntArray;
-import net.imglib2.img.basictypeaccess.array.ShortArray;
+import net.imglib2.img.basictypeaccess.array.*;
 import net.imglib2.img.planar.PlanarImg;
 import net.imglib2.img.planar.PlanarImgs;
 import net.imglib2.type.numeric.NumericType;
 import net.imglib2.type.numeric.RealType;
-import net.imglib2.type.numeric.integer.ByteType;
-import net.imglib2.type.numeric.integer.IntType;
-import net.imglib2.type.numeric.integer.ShortType;
-import net.imglib2.type.numeric.integer.UnsignedByteType;
-import net.imglib2.type.numeric.integer.UnsignedIntType;
-import net.imglib2.type.numeric.integer.UnsignedShortType;
+import net.imglib2.type.numeric.integer.*;
 import net.imglib2.type.numeric.real.DoubleType;
 import net.imglib2.type.numeric.real.FloatType;
 import plugins.tinevez.imglib2icy.VirtualSequence.DimensionArrangement;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ImgLib2IcySplitSequenceAdapter
 {
@@ -47,7 +37,7 @@ public class ImgLib2IcySplitSequenceAdapter
 		return da;
 	}
 
-	private static final long[] getDims( final Sequence sequence , final boolean splitC, final boolean splitZ, final boolean splitT )
+	private static long[] getDims(final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT)
 	{
 		final int sizeX = sequence.getSizeX();
 		final int sizeY = sequence.getSizeY();
@@ -88,16 +78,16 @@ public class ImgLib2IcySplitSequenceAdapter
 		return new long[] { sizeX, sizeY, sizeC, sizeZ, sizeT };
 	}
 
-	private static final long[] getSqueezedDims( final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT )
+	private static long[] getSqueezedDims(final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT)
 	{
 		final long[] dims = squeezeSingletonDims( getDims( sequence, splitC, splitZ, splitT ) );
 		return dims;
 	}
 
-	private static final int linearIndexFromCoordinate(
-			final int c, final int z, final int t,
-			final int sizeC, final int sizeZ,
-			final boolean splitC, final boolean splitZ, final boolean splitT )
+	private static int linearIndexFromCoordinate(
+            final int c, final int z, final int t,
+            final int sizeC, final int sizeZ,
+            final boolean splitC, final boolean splitZ, final boolean splitT)
 	{
 		final int A;
 		final int B;
@@ -170,7 +160,7 @@ public class ImgLib2IcySplitSequenceAdapter
 		return A * c + B * z + C * t;
 	}
 
-	private static final long[] squeezeSingletonDims( final long[] originalDims )
+	private static long[] squeezeSingletonDims(final long[] originalDims)
 	{
 		final long[] dims = new long[ originalDims.length ];
 		int index = 0;
@@ -186,7 +176,7 @@ public class ImgLib2IcySplitSequenceAdapter
 	}
 
 	@SuppressWarnings( { "unchecked", "rawtypes" } )
-	public static final < T extends NumericType< T > & RealType< T >> List< Img< T >> wrap( final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT )
+	public static < T extends NumericType< T > & RealType< T >> List< Img< T >> wrap(final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT)
 	{
 		switch ( sequence.getDataType_() )
 		{
@@ -213,11 +203,10 @@ public class ImgLib2IcySplitSequenceAdapter
 		}
 	}
 
-	@SuppressWarnings( "unchecked" )
 	public static List< Img< ByteType >> wrapByte( final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT )
 	{
-		final List< Img< ByteType >> imgs = new ArrayList< Img< ByteType > >();
-		final List< Integer > planeCounters = new ArrayList< Integer >();
+		final List< Img< ByteType >> imgs = new ArrayList<>();
+		final List< Integer > planeCounters = new ArrayList<>();
 
 		final int sizeC = sequence.getSizeC();
 		final int sizeZ = sequence.getSizeZ();
@@ -259,11 +248,10 @@ public class ImgLib2IcySplitSequenceAdapter
 		return imgs;
 	}
 
-	@SuppressWarnings( "unchecked" )
 	public static List< Img< DoubleType >> wrapDouble( final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT )
 	{
-		final List< Img< DoubleType >> imgs = new ArrayList< Img< DoubleType > >();
-		final List< Integer > planeCounters = new ArrayList< Integer >();
+		final List< Img< DoubleType >> imgs = new ArrayList<>();
+		final List< Integer > planeCounters = new ArrayList<>();
 
 		final int sizeC = sequence.getSizeC();
 		final int sizeZ = sequence.getSizeZ();
@@ -305,11 +293,10 @@ public class ImgLib2IcySplitSequenceAdapter
 		return imgs;
 	}
 
-	@SuppressWarnings( "unchecked" )
-	public static final List< Img< FloatType >> wrapFloat( final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT )
+	public static List< Img< FloatType >> wrapFloat(final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT)
 	{
-		final List< Img< FloatType >> imgs = new ArrayList< Img< FloatType > >();
-		final List< Integer > planeCounters = new ArrayList< Integer >();
+		final List< Img< FloatType >> imgs = new ArrayList<>();
+		final List< Integer > planeCounters = new ArrayList<>();
 
 		final int sizeC = sequence.getSizeC();
 		final int sizeZ = sequence.getSizeZ();
@@ -351,11 +338,10 @@ public class ImgLib2IcySplitSequenceAdapter
 		return imgs;
 	}
 
-	@SuppressWarnings( "unchecked" )
 	public static List<Img< IntType >> wrapInt( final Sequence sequence , final boolean splitC, final boolean splitZ, final boolean splitT )
 	{
-		final List< Img< IntType >> imgs = new ArrayList< Img< IntType > >();
-		final List< Integer > planeCounters = new ArrayList< Integer >();
+		final List< Img< IntType >> imgs = new ArrayList<>();
+		final List< Integer > planeCounters = new ArrayList<>();
 
 		final int sizeC = sequence.getSizeC();
 		final int sizeZ = sequence.getSizeZ();
@@ -397,11 +383,10 @@ public class ImgLib2IcySplitSequenceAdapter
 		return imgs;
 	}
 
-	@SuppressWarnings( "unchecked" )
 	public static List< Img< ShortType >> wrapShort( final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT )
 	{
-		final List< Img< ShortType >> imgs = new ArrayList< Img< ShortType > >();
-		final List< Integer > planeCounters = new ArrayList< Integer >();
+		final List< Img< ShortType >> imgs = new ArrayList<>();
+		final List< Integer > planeCounters = new ArrayList<>();
 
 		final int sizeC = sequence.getSizeC();
 		final int sizeZ = sequence.getSizeZ();
@@ -443,11 +428,10 @@ public class ImgLib2IcySplitSequenceAdapter
 		return imgs;
 	}
 
-	@SuppressWarnings( "unchecked" )
-	public static final List< Img< UnsignedByteType >> wrapUnsignedByte( final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT )
+	public static List< Img< UnsignedByteType >> wrapUnsignedByte(final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT)
 	{
-		final List< Img< UnsignedByteType >> imgs = new ArrayList< Img< UnsignedByteType > >();
-		final List< Integer > planeCounters = new ArrayList< Integer >();
+		final List< Img< UnsignedByteType >> imgs = new ArrayList<>();
+		final List< Integer > planeCounters = new ArrayList<>();
 
 		final int sizeC = sequence.getSizeC();
 		final int sizeZ = sequence.getSizeZ();
@@ -489,11 +473,10 @@ public class ImgLib2IcySplitSequenceAdapter
 		return imgs;
 	}
 
-	@SuppressWarnings( "unchecked" )
 	public static List< Img< UnsignedIntType >> wrapUnsignedInt( final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT )
 	{
-		final List< Img< UnsignedIntType >> imgs = new ArrayList< Img< UnsignedIntType > >();
-		final List< Integer > planeCounters = new ArrayList< Integer >();
+		final List< Img< UnsignedIntType >> imgs = new ArrayList<>();
+		final List< Integer > planeCounters = new ArrayList<>();
 
 		final int sizeC = sequence.getSizeC();
 		final int sizeZ = sequence.getSizeZ();
@@ -535,11 +518,10 @@ public class ImgLib2IcySplitSequenceAdapter
 		return imgs;
 	}
 
-	@SuppressWarnings( "unchecked" )
 	public static List< Img< UnsignedShortType >> wrapUnsignedShort( final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT )
 	{
-		final List< Img< UnsignedShortType >> imgs = new ArrayList< Img< UnsignedShortType > >();
-		final List< Integer > planeCounters = new ArrayList< Integer >();
+		final List< Img< UnsignedShortType >> imgs = new ArrayList<>();
+		final List< Integer > planeCounters = new ArrayList<>();
 
 		final int sizeC = sequence.getSizeC();
 		final int sizeZ = sequence.getSizeZ();
