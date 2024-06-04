@@ -13,7 +13,7 @@ import plugins.tinevez.imglib2icy.VirtualSequence.DimensionArrangement;
 
 public class ImgLib2IcyFunctions
 {
-	public static < T extends NumericType< T > & RealType< T >> Sequence wrap( final Img< T > img )
+	public static < T extends NumericType< T > & RealType< T > > Sequence wrap( final Img< T > img )
 	{
 		// Awesome heuristics.
 		final DimensionArrangement arrangement = heuristics( img );
@@ -75,17 +75,17 @@ public class ImgLib2IcyFunctions
 		}
 	}
 
-	public static < T extends NumericType< T > & RealType< T >> Sequence wrap( final Img< T > img, final DimensionArrangement arrangement )
+	public static < T extends NumericType< T > & RealType< T > > Sequence wrap( final Img< T > img, final DimensionArrangement arrangement )
 	{
 		return new VirtualSequence( img, arrangement );
 	}
 
-	public static < T extends NumericType< T > & RealType< T >> Img< T > wrap( final Sequence sequence )
+	public static < T extends NumericType< T > & RealType< T > > Img< T > wrap( final Sequence sequence )
 	{
 		return ImgLib2IcySequenceAdapter.wrap( sequence );
 	}
 
-	public static < T extends NumericType< T > & RealType< T >> Img< T > wrap( final IcyBufferedImage image )
+	public static < T extends NumericType< T > & RealType< T > > Img< T > wrap( final IcyBufferedImage image )
 	{
 		return wrap( new Sequence( image ) );
 	}

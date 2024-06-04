@@ -17,7 +17,7 @@ import java.util.Arrays;
 public class ImgLib2IcySequenceAdapter
 {
 
-	private static long[] getDims(final Sequence sequence)
+	private static long[] getDims( final Sequence sequence )
 	{
 		final int sizeX = sequence.getSizeX();
 		final int sizeY = sequence.getSizeY();
@@ -30,14 +30,13 @@ public class ImgLib2IcySequenceAdapter
 		return new long[] { sizeX, sizeY, sizeC, sizeZ, sizeT };
 	}
 
-	private static long[] getSqueezedDims(final Sequence sequence)
+	private static long[] getSqueezedDims( final Sequence sequence )
 	{
 		final long[] dims = squeezeSingletonDims( getDims( sequence ) );
 		return dims;
 	}
 
-
-	private static long[] squeezeSingletonDims(final long[] originalDims)
+	private static long[] squeezeSingletonDims( final long[] originalDims )
 	{
 		final long[] dims = new long[ originalDims.length ];
 		int index = 0;
@@ -65,7 +64,7 @@ public class ImgLib2IcySequenceAdapter
 	 * @param sequence
 	 * @return a new, 4-elements, <code>double</code> array.
 	 */
-	public static double[] getCalibration(final Sequence sequence)
+	public static double[] getCalibration( final Sequence sequence )
 	{
 		final double[] calibration = new double[ 4 ]; // XYZT
 
@@ -74,11 +73,10 @@ public class ImgLib2IcySequenceAdapter
 		calibration[ 2 ] = sequence.getPixelSizeZ();
 		calibration[ 3 ] = sequence.getTimeInterval();
 		return calibration;
-
 	}
 
 	@SuppressWarnings( { "unchecked", "rawtypes" } )
-	public static < T extends NumericType< T > & RealType< T >> Img< T > wrap(final Sequence sequence)
+	public static < T extends NumericType< T > & RealType< T > > Img< T > wrap( final Sequence sequence )
 	{
 		switch ( sequence.getDataType_() )
 		{
@@ -137,7 +135,7 @@ public class ImgLib2IcySequenceAdapter
 		return img;
 	}
 
-	public static Img< FloatType > wrapFloat(final Sequence sequence)
+	public static Img< FloatType > wrapFloat( final Sequence sequence )
 	{
 		final PlanarImg< FloatType, FloatArray > img = PlanarImgs.floats( getSqueezedDims( sequence ) );
 		int no = 0;
@@ -185,7 +183,7 @@ public class ImgLib2IcySequenceAdapter
 		return img;
 	}
 
-	public static Img< UnsignedByteType > wrapUnsignedByte(final Sequence sequence)
+	public static Img< UnsignedByteType > wrapUnsignedByte( final Sequence sequence )
 	{
 		final PlanarImg< UnsignedByteType, ByteArray > img = PlanarImgs.unsignedBytes( getSqueezedDims( sequence ) );
 		int no = 0;

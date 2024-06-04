@@ -26,6 +26,7 @@ public class ImgLib2SequenceSplitter extends EzPlug
 		addEzComponent( splitZ );
 		addEzComponent( splitT );
 	}
+
 	@Override
 	protected void execute()
 	{
@@ -36,7 +37,7 @@ public class ImgLib2SequenceSplitter extends EzPlug
 			return;
 		}
 
-		final List< Img< UnsignedByteType >> imgs = ImgLib2IcySplitSequenceAdapter.wrapUnsignedByte( sequence,
+		final List< Img< UnsignedByteType > > imgs = ImgLib2IcySplitSequenceAdapter.wrapUnsignedByte( sequence,
 				splitC.getValue( true ),
 				splitZ.getValue( true ),
 				splitT.getValue( true ) );
@@ -52,7 +53,6 @@ public class ImgLib2SequenceSplitter extends EzPlug
 			addSequence( seq );
 		}
 	}
-
 
 	@Override
 	public void clean()

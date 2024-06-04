@@ -9,7 +9,7 @@ import net.imglib2.type.numeric.RealType;
 import net.imglib2.util.Util;
 import plugins.tinevez.imglib2icy.VirtualSequence.DimensionArrangement;
 
-public class ImgLib2Test< T extends RealType< T >> extends PluginActionable implements PluginLibrary
+public class ImgLib2Test< T extends RealType< T > > extends PluginActionable implements PluginLibrary
 {
 
 	public static final String LIB_NAME = "ImgLib2-Icy";
@@ -41,7 +41,7 @@ public class ImgLib2Test< T extends RealType< T >> extends PluginActionable impl
 						+ "<li>of type " + img.firstElement().getClass() + "</li>"
 						+ "</ul>"
 						+ "</html>",
-						MessageDialog.PLAIN_MESSAGE );
+				MessageDialog.PLAIN_MESSAGE );
 	}
 
 }
