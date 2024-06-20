@@ -17,7 +17,7 @@
     </description>
 
     <properties>
-        <artifact-to-extract>imglib2</artifact-to-extract>
+        <artifact-to-extract>imglib2,imglib2-roi,imglib2-realtransform,imglib2-algorithm,imglib2-algorithm-fft,imglib2-algorithm-gpl,imglib2-ui,imglib2-cache</artifact-to-extract>
     </properties>
 
     <dependencies>
