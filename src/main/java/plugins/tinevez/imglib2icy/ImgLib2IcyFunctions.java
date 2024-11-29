@@ -3,6 +3,7 @@ package plugins.tinevez.imglib2icy;
 import icy.image.IcyBufferedImage;
 import icy.sequence.Sequence;
 import net.imglib2.Interval;
+import net.imglib2.RandomAccessibleInterval;
 import net.imglib2.img.Img;
 import net.imglib2.type.numeric.NumericType;
 import net.imglib2.type.numeric.RealType;
@@ -13,11 +14,11 @@ import plugins.tinevez.imglib2icy.VirtualSequence.DimensionArrangement;
 
 public class ImgLib2IcyFunctions
 {
-	public static < T extends NumericType< T > & RealType< T >> Sequence wrap( final Img< T > img )
+	public static < T extends NumericType< T > & RealType< T >> Sequence wrap( final RandomAccessibleInterval< T > rai )
 	{
 		// Awesome heuristics.
-		final DimensionArrangement arrangement = heuristics( img );
-		return wrap( img, arrangement );
+		final DimensionArrangement arrangement = heuristics( rai );
+		return wrap( rai, arrangement );
 	}
 
 	private static DimensionArrangement heuristics( final Interval source )
@@ -75,9 +76,9 @@ public class ImgLib2IcyFunctions
 		}
 	}
 
-	public static < T extends NumericType< T > & RealType< T >> Sequence wrap( final Img< T > img, final DimensionArrangement arrangement )
+	public static < T extends NumericType< T > & RealType< T >> Sequence wrap( final RandomAccessibleInterval< T > rai, final DimensionArrangement arrangement )
 	{
-		return new VirtualSequence( img, arrangement );
+		return new VirtualSequence( rai, arrangement );
 	}
 
 	public static < T extends NumericType< T > & RealType< T >> Img< T > wrap( final Sequence sequence )

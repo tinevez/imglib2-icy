@@ -19,7 +19,6 @@ import net.imglib2.type.Type;
 import net.imglib2.type.numeric.integer.UnsignedByteType;
 import net.imglib2.type.numeric.integer.UnsignedShortType;
 import net.imglib2.type.numeric.real.FloatType;
-import net.imglib2.util.Util;
 import net.imglib2.view.Views;
 
 import java.util.ArrayList;
@@ -207,7 +206,8 @@ public class VirtualSequence extends Sequence
 			sizeC = 1;
 		}
 
-		final Type rawType = ( Type ) Util.getTypeFromInterval( source );
+		//final Type rawType = ( Type ) Util.getTypeFromInterval( source );
+		final Type rawType = ( Type ) source.getType();
 		if ( !( rawType instanceof NativeType ) ) { throw new IllegalArgumentException( "Non-native types are unsupported, got : " + rawType ); }
 
 		final NativeType rt = ( NativeType ) rawType;
@@ -287,7 +287,8 @@ public class VirtualSequence extends Sequence
 		}
 		else
 		{
-			final ArrayImg img = new ArrayImgFactory().create( new long[] { sizeX, sizeY }, type );
+			//final ArrayImg img = new ArrayImgFactory().create( new long[] { sizeX, sizeY }, type );
+			final ArrayImg img = new ArrayImgFactory(type).create(sizeX, sizeY);
 			final IterableIntervalProjector2D projector = new IterableIntervalProjector2D( 0, 1, rai, img, converter );
 			projector.map();
 			projectors[ 0 ] = projector;
@@ -370,13 +371,13 @@ public class VirtualSequence extends Sequence
 	}
 
 	@Override
-	public ArrayList< IcyBufferedImage > getAllImage()
+	public ArrayList< IcyBufferedImage > getAllImage() throws UnsupportedOperationException
 	{
 		throw new UnsupportedOperationException( "VirtualSequence cannot return a collection of its content." );
 	}
 
 	@Override
-	public ArrayList< VolumetricImage > getAllVolumetricImage()
+	public ArrayList< VolumetricImage > getAllVolumetricImage() throws UnsupportedOperationException
 	{
 		throw new UnsupportedOperationException( "VirtualSequence cannot return a collection of its content." );
 	}
@@ -393,13 +394,13 @@ public class VirtualSequence extends Sequence
 	private class VirtualVolumetricImage extends VolumetricImage
 	{
 		@Override
-		public ArrayList< IcyBufferedImage > getAllImage()
+		public ArrayList< IcyBufferedImage > getAllImage() throws UnsupportedOperationException
 		{
 			throw new UnsupportedOperationException( "VirtualVolumetricImage cannot return a collection of its content." );
 		}
 
 		@Override
-		public TreeMap< Integer, IcyBufferedImage > getImages()
+		public TreeMap< Integer, IcyBufferedImage > getImages() throws UnsupportedOperationException
 		{
 			throw new UnsupportedOperationException( "VirtualVolumetricImage cannot return a collection of its content." );
 		}
@@ -445,13 +446,13 @@ public class VirtualSequence extends Sequence
 		}
 
 		@Override
-		public void clear()
+		public void clear() throws UnsupportedOperationException
 		{
 			throw new UnsupportedOperationException( "VirtualVolumetricImage cannot clear its content." );
 		}
 
 		@Override
-		public void setImage( final int z, final IcyBufferedImage image )
+		public void setImage( final int z, final IcyBufferedImage image ) throws UnsupportedOperationException
 		{
 			throw new UnsupportedOperationException( "VirtualVolumetricImage cannot set its content." );
 		}
@@ -463,7 +464,7 @@ public class VirtualSequence extends Sequence
 		}
 
 		@Override
-		public boolean removeImage( final int z )
+		public boolean removeImage( final int z ) throws UnsupportedOperationException
 		{
 			throw new UnsupportedOperationException( "VirtualVolumetricImage cannot remove an image from its content." );
 		}
