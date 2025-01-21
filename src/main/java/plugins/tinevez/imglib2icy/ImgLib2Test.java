@@ -14,7 +14,7 @@ public class ImgLib2Test< T extends RealType< T >> extends PluginActionable impl
 
 	public static final String LIB_NAME = "ImgLib2-Icy";
 
-	public static final String LIB_VERSION = "v0.0.3";
+	public static final String LIB_VERSION = "v7.1.5";
 
 	@Override
 	public void run()

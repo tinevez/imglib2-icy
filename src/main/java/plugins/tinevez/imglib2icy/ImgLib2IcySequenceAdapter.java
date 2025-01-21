@@ -11,6 +11,7 @@ import net.imglib2.type.numeric.RealType;
 import net.imglib2.type.numeric.integer.*;
 import net.imglib2.type.numeric.real.DoubleType;
 import net.imglib2.type.numeric.real.FloatType;
+import net.imglib2.util.Cast;
 
 import java.util.Arrays;
 
@@ -80,6 +81,9 @@ public class ImgLib2IcySequenceAdapter
 	@SuppressWarnings( { "unchecked", "rawtypes" } )
 	public static < T extends NumericType< T > & RealType< T >> Img< T > wrap(final Sequence sequence)
 	{
+		if (sequence instanceof VirtualSequence)
+			return Cast.unchecked(((VirtualSequence) sequence).getSource());
+
 		switch ( sequence.getDataType_() )
 		{
 		case BYTE:

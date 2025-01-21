@@ -157,6 +157,8 @@ public class VirtualSequence extends Sequence
 	@SuppressWarnings( "rawtypes" )
 	private final IterableIntervalProjector2D[] projectors;
 
+	private final RandomAccessibleInterval<?> source;
+
 	/*
 	 * CONSTRUCTOR
 	 */
@@ -166,6 +168,7 @@ public class VirtualSequence extends Sequence
 	{
 		super( source.toString() + " - " + arrangement );
 		this.arrangement = arrangement;
+		this.source = source;
 
 		if (source.numDimensions() != arrangement.numDimensions()) {
 			throw new IllegalArgumentException( "Source does not have the same dimensionality that of the declared dimension arrangment. Expected "
@@ -385,6 +388,10 @@ public class VirtualSequence extends Sequence
 	public IcyBufferedImage getRef()
 	{
 		return image;
+	}
+
+	public final RandomAccessibleInterval<?> getSource() {
+		return source;
 	}
 
 	/*
