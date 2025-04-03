@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>imglib2-icy</artifactId>
-    <version>7.1.5</version>
+    <version>7.1.6</version>
 
     <name>ImgLib2 Icy</name>
     <description>ImgLib2 wrappers for Icy sequences.
