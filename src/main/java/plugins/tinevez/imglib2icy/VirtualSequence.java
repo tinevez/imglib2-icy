@@ -170,10 +170,9 @@ public class VirtualSequence extends Sequence
 		this.arrangement = arrangement;
 		this.source = source;
 
-		if (source.numDimensions() != arrangement.numDimensions()) {
-			throw new IllegalArgumentException( "Source does not have the same dimensionality that of the declared dimension arrangment. Expected "
-					+ arrangement.numDimensions() + " but got " + source.numDimensions() + "." );
-		}
+		if ( source.numDimensions() != arrangement.numDimensions() )
+		{ throw new IllegalArgumentException( "Source does not have the same dimensionality that of the declared dimension arrangment. Expected "
+				+ arrangement.numDimensions() + " but got " + source.numDimensions() + "." ); }
 
 		sizeX = ( int ) source.dimension( 0 );
 		sizeY = ( int ) source.dimension( 1 );
@@ -300,7 +299,6 @@ public class VirtualSequence extends Sequence
 			image = new IcyBufferedImage( sizeX, sizeY, data, signed );
 		}
 		onImageAdded( image );
-
 
 		volumetricImage = new VirtualVolumetricImage();
 	}

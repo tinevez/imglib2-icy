@@ -1,4 +1,3 @@
-
 package plugins.tinevez.imglib2icy;
 
 import icy.sequence.Sequence;
@@ -37,7 +36,7 @@ public class ImgLib2IcySplitSequenceAdapter
 		return da;
 	}
 
-	private static long[] getDims(final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT)
+	private static long[] getDims( final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT )
 	{
 		final int sizeX = sequence.getSizeX();
 		final int sizeY = sequence.getSizeY();
@@ -78,16 +77,16 @@ public class ImgLib2IcySplitSequenceAdapter
 		return new long[] { sizeX, sizeY, sizeC, sizeZ, sizeT };
 	}
 
-	private static long[] getSqueezedDims(final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT)
+	private static long[] getSqueezedDims( final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT )
 	{
 		final long[] dims = squeezeSingletonDims( getDims( sequence, splitC, splitZ, splitT ) );
 		return dims;
 	}
 
 	private static int linearIndexFromCoordinate(
-            final int c, final int z, final int t,
-            final int sizeC, final int sizeZ,
-            final boolean splitC, final boolean splitZ, final boolean splitT)
+			final int c, final int z, final int t,
+			final int sizeC, final int sizeZ,
+			final boolean splitC, final boolean splitZ, final boolean splitT )
 	{
 		final int A;
 		final int B;
@@ -160,7 +159,7 @@ public class ImgLib2IcySplitSequenceAdapter
 		return A * c + B * z + C * t;
 	}
 
-	private static long[] squeezeSingletonDims(final long[] originalDims)
+	private static long[] squeezeSingletonDims( final long[] originalDims )
 	{
 		final long[] dims = new long[ originalDims.length ];
 		int index = 0;
@@ -176,7 +175,7 @@ public class ImgLib2IcySplitSequenceAdapter
 	}
 
 	@SuppressWarnings( { "unchecked", "rawtypes" } )
-	public static < T extends NumericType< T > & RealType< T >> List< Img< T >> wrap(final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT)
+	public static < T extends NumericType< T > & RealType< T > > List< Img< T > > wrap( final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT )
 	{
 		switch ( sequence.getDataType_() )
 		{
@@ -203,9 +202,9 @@ public class ImgLib2IcySplitSequenceAdapter
 		}
 	}
 
-	public static List< Img< ByteType >> wrapByte( final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT )
+	public static List< Img< ByteType > > wrapByte( final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT )
 	{
-		final List< Img< ByteType >> imgs = new ArrayList<>();
+		final List< Img< ByteType > > imgs = new ArrayList<>();
 		final List< Integer > planeCounters = new ArrayList<>();
 
 		final int sizeC = sequence.getSizeC();
@@ -248,9 +247,9 @@ public class ImgLib2IcySplitSequenceAdapter
 		return imgs;
 	}
 
-	public static List< Img< DoubleType >> wrapDouble( final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT )
+	public static List< Img< DoubleType > > wrapDouble( final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT )
 	{
-		final List< Img< DoubleType >> imgs = new ArrayList<>();
+		final List< Img< DoubleType > > imgs = new ArrayList<>();
 		final List< Integer > planeCounters = new ArrayList<>();
 
 		final int sizeC = sequence.getSizeC();
@@ -293,9 +292,9 @@ public class ImgLib2IcySplitSequenceAdapter
 		return imgs;
 	}
 
-	public static List< Img< FloatType >> wrapFloat(final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT)
+	public static List< Img< FloatType > > wrapFloat( final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT )
 	{
-		final List< Img< FloatType >> imgs = new ArrayList<>();
+		final List< Img< FloatType > > imgs = new ArrayList<>();
 		final List< Integer > planeCounters = new ArrayList<>();
 
 		final int sizeC = sequence.getSizeC();
@@ -328,7 +327,7 @@ public class ImgLib2IcySplitSequenceAdapter
 						count = planeCounters.get( index );
 					}
 
-					final float[] data = sequence.getDataXYAsFloat(  t, z, c );
+					final float[] data = sequence.getDataXYAsFloat( t, z, c );
 					final FloatArray plane = new FloatArray( data );
 					img.setPlane( count++, plane );
 					planeCounters.set( index, count );
@@ -338,9 +337,9 @@ public class ImgLib2IcySplitSequenceAdapter
 		return imgs;
 	}
 
-	public static List<Img< IntType >> wrapInt( final Sequence sequence , final boolean splitC, final boolean splitZ, final boolean splitT )
+	public static List< Img< IntType > > wrapInt( final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT )
 	{
-		final List< Img< IntType >> imgs = new ArrayList<>();
+		final List< Img< IntType > > imgs = new ArrayList<>();
 		final List< Integer > planeCounters = new ArrayList<>();
 
 		final int sizeC = sequence.getSizeC();
@@ -373,7 +372,7 @@ public class ImgLib2IcySplitSequenceAdapter
 						count = planeCounters.get( index );
 					}
 
-					final int[] data = sequence.getDataXYAsInt(  t, z, c );
+					final int[] data = sequence.getDataXYAsInt( t, z, c );
 					final IntArray plane = new IntArray( data );
 					img.setPlane( count++, plane );
 					planeCounters.set( index, count );
@@ -383,9 +382,9 @@ public class ImgLib2IcySplitSequenceAdapter
 		return imgs;
 	}
 
-	public static List< Img< ShortType >> wrapShort( final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT )
+	public static List< Img< ShortType > > wrapShort( final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT )
 	{
-		final List< Img< ShortType >> imgs = new ArrayList<>();
+		final List< Img< ShortType > > imgs = new ArrayList<>();
 		final List< Integer > planeCounters = new ArrayList<>();
 
 		final int sizeC = sequence.getSizeC();
@@ -428,9 +427,9 @@ public class ImgLib2IcySplitSequenceAdapter
 		return imgs;
 	}
 
-	public static List< Img< UnsignedByteType >> wrapUnsignedByte(final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT)
+	public static List< Img< UnsignedByteType > > wrapUnsignedByte( final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT )
 	{
-		final List< Img< UnsignedByteType >> imgs = new ArrayList<>();
+		final List< Img< UnsignedByteType > > imgs = new ArrayList<>();
 		final List< Integer > planeCounters = new ArrayList<>();
 
 		final int sizeC = sequence.getSizeC();
@@ -473,9 +472,9 @@ public class ImgLib2IcySplitSequenceAdapter
 		return imgs;
 	}
 
-	public static List< Img< UnsignedIntType >> wrapUnsignedInt( final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT )
+	public static List< Img< UnsignedIntType > > wrapUnsignedInt( final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT )
 	{
-		final List< Img< UnsignedIntType >> imgs = new ArrayList<>();
+		final List< Img< UnsignedIntType > > imgs = new ArrayList<>();
 		final List< Integer > planeCounters = new ArrayList<>();
 
 		final int sizeC = sequence.getSizeC();
@@ -518,9 +517,9 @@ public class ImgLib2IcySplitSequenceAdapter
 		return imgs;
 	}
 
-	public static List< Img< UnsignedShortType >> wrapUnsignedShort( final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT )
+	public static List< Img< UnsignedShortType > > wrapUnsignedShort( final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT )
 	{
-		final List< Img< UnsignedShortType >> imgs = new ArrayList<>();
+		final List< Img< UnsignedShortType > > imgs = new ArrayList<>();
 		final List< Integer > planeCounters = new ArrayList<>();
 
 		final int sizeC = sequence.getSizeC();

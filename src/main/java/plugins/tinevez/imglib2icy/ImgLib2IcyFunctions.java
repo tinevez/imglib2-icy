@@ -75,18 +75,18 @@ public class ImgLib2IcyFunctions
 			throw new UnsupportedOperationException( "Source Img with ndims > 5 are not supported." );
 		}
 	}
-
+  
 	public static < T extends NumericType< T > & RealType< T >> Sequence wrap( final RandomAccessibleInterval< T > rai, final DimensionArrangement arrangement )
 	{
 		return new VirtualSequence( rai, arrangement );
 	}
 
-	public static < T extends NumericType< T > & RealType< T >> Img< T > wrap( final Sequence sequence )
+	public static < T extends NumericType< T > & RealType< T > > Img< T > wrap( final Sequence sequence )
 	{
 		return ImgLib2IcySequenceAdapter.wrap( sequence );
 	}
 
-	public static < T extends NumericType< T > & RealType< T >> Img< T > wrap( final IcyBufferedImage image )
+	public static < T extends NumericType< T > & RealType< T > > Img< T > wrap( final IcyBufferedImage image )
 	{
 		return wrap( new Sequence( image ) );
 	}

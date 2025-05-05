@@ -1,31 +1,33 @@
 package plugins.tinevez.imglib2icy;
 
+import java.util.List;
+
 import icy.gui.dialog.MessageDialog;
 import icy.sequence.Sequence;
 import net.imglib2.img.Img;
-import net.imglib2.type.numeric.integer.UnsignedByteType;
+import net.imglib2.type.numeric.NumericType;
+import net.imglib2.type.numeric.RealType;
 import plugins.adufour.ezplug.EzPlug;
 import plugins.adufour.ezplug.EzVarBoolean;
 import plugins.tinevez.imglib2icy.VirtualSequence.DimensionArrangement;
 
-import java.util.List;
-
-public class ImgLib2SequenceSplitter extends EzPlug
+public class ImgLib2SequenceSplitter< T extends NumericType< T > & RealType< T > > extends EzPlug
 {
 
-	private final EzVarBoolean splitC = new EzVarBoolean( "Split C", true );
+	private final EzVarBoolean splitCUI = new EzVarBoolean( "Split C", true );
 
-	private final EzVarBoolean splitZ = new EzVarBoolean( "Split Z", false );
+	private final EzVarBoolean splitZUI = new EzVarBoolean( "Split Z", false );
 
-	private final EzVarBoolean splitT = new EzVarBoolean( "Split T", false );
+	private final EzVarBoolean splitTUI = new EzVarBoolean( "Split T", false );
 
 	@Override
 	protected void initialize()
 	{
-		addEzComponent( splitC );
-		addEzComponent( splitZ );
-		addEzComponent( splitT );
+		addEzComponent( splitCUI );
+		addEzComponent( splitZUI );
+		addEzComponent( splitTUI );
 	}
+
 	@Override
 	protected void execute()
 	{
@@ -35,24 +37,20 @@ public class ImgLib2SequenceSplitter extends EzPlug
 			MessageDialog.showDialog( "Please open a sequence first.", MessageDialog.ERROR_MESSAGE );
 			return;
 		}
+		
+		final boolean splitC = splitCUI.getValue( true );
+		final boolean splitZ = splitZUI.getValue( true );
+		final boolean splitT = splitTUI.getValue( true );
 
-		final List< Img< UnsignedByteType >> imgs = ImgLib2IcySplitSequenceAdapter.wrapUnsignedByte( sequence,
-				splitC.getValue( true ),
-				splitZ.getValue( true ),
-				splitT.getValue( true ) );
+		final List< Img< T > > imgs = ImgLib2IcySplitSequenceAdapter.wrap( sequence, splitC, splitZ, splitT );
+		final DimensionArrangement dim = ImgLib2IcySplitSequenceAdapter.getDimensionArrangement( sequence, splitC, splitZ, splitT );
 
-		final DimensionArrangement dim = ImgLib2IcySplitSequenceAdapter.getDimensionArrangement( sequence,
-				splitC.getValue( true ),
-				splitZ.getValue( true ),
-				splitT.getValue( true ) );
-
-		for ( final Img< UnsignedByteType > img : imgs )
+		for ( final Img< T > img : imgs )
 		{
 			final Sequence seq = ImgLib2IcyFunctions.wrap( img, dim );
 			addSequence( seq );
 		}
 	}
-
 
 	@Override
 	public void clean()
