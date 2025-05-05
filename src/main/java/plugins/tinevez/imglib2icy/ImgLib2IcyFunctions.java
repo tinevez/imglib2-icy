@@ -1,7 +1,5 @@
 package plugins.tinevez.imglib2icy;
 
-import icy.image.IcyBufferedImage;
-import icy.sequence.Sequence;
 import net.imglib2.Interval;
 import net.imglib2.RandomAccessibleInterval;
 import net.imglib2.img.Img;
@@ -10,11 +8,13 @@ import net.imglib2.type.numeric.RealType;
 import net.imglib2.type.numeric.integer.*;
 import net.imglib2.type.numeric.real.DoubleType;
 import net.imglib2.type.numeric.real.FloatType;
+import org.bioimageanalysis.icy.model.image.IcyBufferedImage;
+import org.bioimageanalysis.icy.model.sequence.Sequence;
 import plugins.tinevez.imglib2icy.VirtualSequence.DimensionArrangement;
 
 public class ImgLib2IcyFunctions
 {
-	public static < T extends NumericType< T > & RealType< T >> Sequence wrap( final RandomAccessibleInterval< T > rai )
+	public static < T extends NumericType< T > & RealType< T >> Sequence wrap(final RandomAccessibleInterval< T > rai )
 	{
 		// Awesome heuristics.
 		final DimensionArrangement arrangement = heuristics( rai );

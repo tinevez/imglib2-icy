@@ -6,24 +6,16 @@
     <parent>
         <artifactId>pom-icy</artifactId>
         <groupId>org.bioimageanalysis.icy</groupId>
-        <version>2.1.7</version>
+        <version>3.0.0-a.4</version>
     </parent>
 
     <artifactId>imglib2-icy</artifactId>
-    <version>7.1.6</version>
+    <version>8.0.0-a.3</version>
 
     <name>ImgLib2 Icy</name>
-    <description>ImgLib2 wrappers for Icy sequences.
-    </description>
-
-    <properties>
-        <artifact-to-extract>imglib2,imglib2-roi,imglib2-realtransform,imglib2-algorithm,imglib2-algorithm-fft,imglib2-algorithm-gpl,imglib2-ui,imglib2-cache</artifact-to-extract>
-    </properties>
+    <description>ImgLib2 wrappers for Icy sequences.</description>
 
     <dependencies>
-		
-		<!-- ImgLib2 deps-->
-		
         <dependency>
             <groupId>net.imglib2</groupId>
             <artifactId>imglib2</artifactId>
@@ -65,30 +57,10 @@
             <artifactId>imglib2-cache</artifactId>
             <version>1.0.0-beta-19</version>
         </dependency>
-        
-		<!-- Icy deps-->
-		
-		<dependency>
-			<groupId>org.bioimageanalysis.icy</groupId>
-			<artifactId>icy-kernel</artifactId>
-			<version>2.5.1</version>
-		</dependency>
-		
+
 		<dependency>
 			<groupId>org.bioimageanalysis.icy</groupId>
 			<artifactId>ezplug</artifactId>
 		</dependency>
-		
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>icy</id>
-            <url>https://icy-nexus.pasteur.fr/repository/icy-core/</url>
-        </repository>
-        <repository>
-            <id>scijava.public</id>
-            <url>https://maven.scijava.org/content/groups/public</url>
-        </repository>
-    </repositories>
 </project>

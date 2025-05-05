@@ -1,9 +1,5 @@
 package plugins.tinevez.imglib2icy;
 
-import icy.image.IcyBufferedImage;
-import icy.sequence.Sequence;
-import icy.sequence.VolumetricImage;
-import icy.type.DataType;
 import net.imglib2.RandomAccessibleInterval;
 import net.imglib2.converter.Converter;
 import net.imglib2.converter.RealFloatConverter;
@@ -20,6 +16,10 @@ import net.imglib2.type.numeric.integer.UnsignedByteType;
 import net.imglib2.type.numeric.integer.UnsignedShortType;
 import net.imglib2.type.numeric.real.FloatType;
 import net.imglib2.view.Views;
+import org.bioimageanalysis.icy.common.type.DataType;
+import org.bioimageanalysis.icy.model.image.IcyBufferedImage;
+import org.bioimageanalysis.icy.model.sequence.Sequence;
+import org.bioimageanalysis.icy.model.sequence.VolumetricImage;
 
 import java.util.ArrayList;
 import java.util.TreeMap;

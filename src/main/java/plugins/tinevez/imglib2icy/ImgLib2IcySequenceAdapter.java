@@ -1,7 +1,5 @@
 package plugins.tinevez.imglib2icy;
 
-import icy.image.IcyBufferedImage;
-import icy.sequence.Sequence;
 import net.imglib2.img.Img;
 import net.imglib2.img.basictypeaccess.array.*;
 import net.imglib2.img.planar.PlanarImg;
@@ -12,6 +10,8 @@ import net.imglib2.type.numeric.integer.*;
 import net.imglib2.type.numeric.real.DoubleType;
 import net.imglib2.type.numeric.real.FloatType;
 import net.imglib2.util.Cast;
+import org.bioimageanalysis.icy.model.image.IcyBufferedImage;
+import org.bioimageanalysis.icy.model.sequence.Sequence;
 
 import java.util.Arrays;
 
@@ -82,7 +82,7 @@ public class ImgLib2IcySequenceAdapter
 		if (sequence instanceof VirtualSequence)
 			return Cast.unchecked(((VirtualSequence) sequence).getSource());
 
-		switch ( sequence.getDataType_() )
+		switch ( sequence.getDataType() )
 		{
 		case BYTE:
 			return ( Img ) wrapByte( sequence );

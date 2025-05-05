@@ -2,11 +2,11 @@ package plugins.tinevez.imglib2icy;
 
 import java.util.List;
 
-import icy.gui.dialog.MessageDialog;
-import icy.sequence.Sequence;
 import net.imglib2.img.Img;
 import net.imglib2.type.numeric.NumericType;
 import net.imglib2.type.numeric.RealType;
+import org.bioimageanalysis.icy.gui.dialog.MessageDialog;
+import org.bioimageanalysis.icy.model.sequence.Sequence;
 import plugins.adufour.ezplug.EzPlug;
 import plugins.adufour.ezplug.EzVarBoolean;
 import plugins.tinevez.imglib2icy.VirtualSequence.DimensionArrangement;

@@ -1,15 +1,14 @@
 package plugins.tinevez.imglib2icy;
 
-import icy.gui.dialog.MessageDialog;
-import icy.plugin.abstract_.PluginActionable;
-import icy.plugin.interface_.PluginLibrary;
-import icy.sequence.Sequence;
 import net.imglib2.img.Img;
 import net.imglib2.type.numeric.RealType;
 import net.imglib2.util.Util;
+import org.bioimageanalysis.icy.extension.plugin.abstract_.PluginActionable;
+import org.bioimageanalysis.icy.gui.dialog.MessageDialog;
+import org.bioimageanalysis.icy.model.sequence.Sequence;
 import plugins.tinevez.imglib2icy.VirtualSequence.DimensionArrangement;
 
-public class ImgLib2Test< T extends RealType< T > > extends PluginActionable implements PluginLibrary
+public class ImgLib2Test< T extends RealType< T > > extends PluginActionable
 {
 
 	public static final String LIB_NAME = "ImgLib2-Icy";

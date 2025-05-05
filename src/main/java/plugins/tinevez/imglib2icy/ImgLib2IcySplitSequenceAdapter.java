@@ -1,6 +1,5 @@
 package plugins.tinevez.imglib2icy;
 
-import icy.sequence.Sequence;
 import net.imglib2.img.Img;
 import net.imglib2.img.basictypeaccess.array.*;
 import net.imglib2.img.planar.PlanarImg;
@@ -10,6 +9,7 @@ import net.imglib2.type.numeric.RealType;
 import net.imglib2.type.numeric.integer.*;
 import net.imglib2.type.numeric.real.DoubleType;
 import net.imglib2.type.numeric.real.FloatType;
+import org.bioimageanalysis.icy.model.sequence.Sequence;
 import plugins.tinevez.imglib2icy.VirtualSequence.DimensionArrangement;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import java.util.List;
 
 public class ImgLib2IcySplitSequenceAdapter
 {
-	public static DimensionArrangement getDimensionArrangement( final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT )
+	public static DimensionArrangement getDimensionArrangement(final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT )
 	{
 		DimensionArrangement da = ImgLib2IcyFunctions.getDimensionArrangement( sequence );
 		if ( splitC )
@@ -177,7 +177,7 @@ public class ImgLib2IcySplitSequenceAdapter
 	@SuppressWarnings( { "unchecked", "rawtypes" } )
 	public static < T extends NumericType< T > & RealType< T > > List< Img< T > > wrap( final Sequence sequence, final boolean splitC, final boolean splitZ, final boolean splitT )
 	{
-		switch ( sequence.getDataType_() )
+		switch ( sequence.getDataType() )
 		{
 		case BYTE:
 			return ( List ) wrapByte( sequence, splitC, splitZ, splitT );
