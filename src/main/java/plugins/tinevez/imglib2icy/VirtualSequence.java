@@ -30,7 +30,7 @@ public class VirtualSequence extends Sequence
 	public enum DimensionArrangement
 	{
 		XY( false, false, false, 0, 0, 0, 0, 0 ),
-		XYC( true, false, false, 0, 0, 0, 0, 0 ),
+		XYC( true, false, false, 2, 0, 0, 0, 0 ),
 		XYZ( false, true, false, 0, 2, 2, 0, 0 ),
 		XYT( false, false, true, 0, 0, 0, 2, 2 ),
 		XYCT( true, false, true, 2, 0, 0, 3, 2 ),
@@ -157,6 +157,8 @@ public class VirtualSequence extends Sequence
 	@SuppressWarnings( "rawtypes" )
 	private final IterableIntervalProjector2D[] projectors;
 
+	private final RandomAccessibleInterval<?> source;
+
 	/*
 	 * CONSTRUCTOR
 	 */
@@ -166,6 +168,7 @@ public class VirtualSequence extends Sequence
 	{
 		super( source.toString() + " - " + arrangement );
 		this.arrangement = arrangement;
+		this.source = source;
 
 		if ( source.numDimensions() != arrangement.numDimensions() )
 		{ throw new IllegalArgumentException( "Source does not have the same dimensionality that of the declared dimension arrangment. Expected "
@@ -205,9 +208,9 @@ public class VirtualSequence extends Sequence
 			sizeC = 1;
 		}
 
+		//final Type rawType = ( Type ) Util.getTypeFromInterval( source );
 		final Type rawType = ( Type ) source.getType();
-		if ( !( rawType instanceof NativeType ) )
-		{ throw new IllegalArgumentException( "Non-native types are unsupported, got : " + rawType ); }
+		if ( !( rawType instanceof NativeType ) ) { throw new IllegalArgumentException( "Non-native types are unsupported, got : " + rawType ); }
 
 		final NativeType rt = ( NativeType ) rawType;
 		final NativeType type;
@@ -286,7 +289,8 @@ public class VirtualSequence extends Sequence
 		}
 		else
 		{
-			final ArrayImg img = new ArrayImgFactory( type ).create( sizeX, sizeY );
+			//final ArrayImg img = new ArrayImgFactory().create( new long[] { sizeX, sizeY }, type );
+			final ArrayImg img = new ArrayImgFactory(type).create(sizeX, sizeY);
 			final IterableIntervalProjector2D projector = new IterableIntervalProjector2D( 0, 1, rai, img, converter );
 			projector.map();
 			projectors[ 0 ] = projector;
@@ -368,13 +372,13 @@ public class VirtualSequence extends Sequence
 	}
 
 	@Override
-	public ArrayList< IcyBufferedImage > getAllImage()
+	public ArrayList< IcyBufferedImage > getAllImage() throws UnsupportedOperationException
 	{
 		throw new UnsupportedOperationException( "VirtualSequence cannot return a collection of its content." );
 	}
 
 	@Override
-	public ArrayList< VolumetricImage > getAllVolumetricImage()
+	public ArrayList< VolumetricImage > getAllVolumetricImage() throws UnsupportedOperationException
 	{
 		throw new UnsupportedOperationException( "VirtualSequence cannot return a collection of its content." );
 	}
@@ -384,6 +388,10 @@ public class VirtualSequence extends Sequence
 		return image;
 	}
 
+	public final RandomAccessibleInterval<?> getSource() {
+		return source;
+	}
+
 	/*
 	 * VIRTUAL VOLUMETRIC IMAGE.
 	 */
@@ -391,13 +399,13 @@ public class VirtualSequence extends Sequence
 	private class VirtualVolumetricImage extends VolumetricImage
 	{
 		@Override
-		public ArrayList< IcyBufferedImage > getAllImage()
+		public ArrayList< IcyBufferedImage > getAllImage() throws UnsupportedOperationException
 		{
 			throw new UnsupportedOperationException( "VirtualVolumetricImage cannot return a collection of its content." );
 		}
 
 		@Override
-		public TreeMap< Integer, IcyBufferedImage > getImages()
+		public TreeMap< Integer, IcyBufferedImage > getImages() throws UnsupportedOperationException
 		{
 			throw new UnsupportedOperationException( "VirtualVolumetricImage cannot return a collection of its content." );
 		}
@@ -443,13 +451,13 @@ public class VirtualSequence extends Sequence
 		}
 
 		@Override
-		public void clear()
+		public void clear() throws UnsupportedOperationException
 		{
 			throw new UnsupportedOperationException( "VirtualVolumetricImage cannot clear its content." );
 		}
 
 		@Override
-		public void setImage( final int z, final IcyBufferedImage image )
+		public void setImage( final int z, final IcyBufferedImage image ) throws UnsupportedOperationException
 		{
 			throw new UnsupportedOperationException( "VirtualVolumetricImage cannot set its content." );
 		}
@@ -461,7 +469,7 @@ public class VirtualSequence extends Sequence
 		}
 
 		@Override
-		public boolean removeImage( final int z )
+		public boolean removeImage( final int z ) throws UnsupportedOperationException
 		{
 			throw new UnsupportedOperationException( "VirtualVolumetricImage cannot remove an image from its content." );
 		}
