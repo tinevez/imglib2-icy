@@ -6,16 +6,86 @@
     <parent>
         <artifactId>pom-icy</artifactId>
         <groupId>org.bioimageanalysis.icy</groupId>
-        <version>3.0.0-a.4</version>
+        <version>3.0.0-a.5</version>
     </parent>
 
     <artifactId>imglib2-icy</artifactId>
-    <version>8.0.0-a.3</version>
+    <version>8.0.0-a.5</version>
 
     <name>ImgLib2 Icy</name>
     <description>ImgLib2 wrappers for Icy sequences.</description>
+    <url>https://icy.bioimageanalysis.org/</url>
+    <inceptionYear>2015</inceptionYear>
+
+    <scm>
+        <url>https://github.com/tinevez/imglib2-icy/</url>
+        <tag>v${project.version}</tag>
+    </scm>
+
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/tinevez/imglib2-icy/issues</url>
+    </issueManagement>
+    <ciManagement>
+        <system>GitHub Actions</system>
+        <url>https://github.com/tinevez/imglib2-icy/actions/</url>
+    </ciManagement>
+
+    <organization>
+        <name>Institut Pasteur</name>
+        <url>https://www.pasteur.fr/</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>GNU LGPLv3</name>
+            <url>https://www.gnu.org/licenses/lgpl-3.0</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>tinevez</id>
+            <name>Jean-Yves Tinevez</name>
+            <organization>Institut Pasteur</organization>
+            <organizationUrl>https://pasteur.fr</organizationUrl>
+            <url>https://icy.bioimageanalysis.org/author/tinevez/</url>
+        </developer>
+        <developer>
+            <id>tmusset</id>
+            <name>Thomas Musset</name>
+            <organization>Institut Pasteur</organization>
+            <organizationUrl>https://pasteur.fr</organizationUrl>
+            <url>https://icy.bioimageanalysis.org/author/tmusset/</url>
+        </developer>
+    </developers>
+
+    <contributors>
+        <contributor>
+            <name>Carlos Javier Garcia Lopez de Haro</name>
+            <url>https://github.com/carlosuc3m</url>
+        </contributor>
+    </contributors>
+
+    <mailingLists>
+        <mailingList>
+            <name>Icy</name>
+            <post>icy.team@pasteur.fr</post>
+        </mailingList>
+    </mailingLists>
+
+    <properties>
+        <license.licenseName>GNU LGPLv3</license.licenseName>
+        <license.copyrightOwners>Institut Pasteur</license.copyrightOwners>
+    </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.bioimageanalysis.icy</groupId>
+            <artifactId>ezplug</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>net.imglib2</groupId>
             <artifactId>imglib2</artifactId>
@@ -57,10 +127,12 @@
             <artifactId>imglib2-cache</artifactId>
             <version>1.0.0-beta-19</version>
         </dependency>
-
-		<dependency>
-			<groupId>org.bioimageanalysis.icy</groupId>
-			<artifactId>ezplug</artifactId>
-		</dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>scijava</id>
+            <url>https://maven.scijava.org/repository/public/</url>
+        </repository>
+    </repositories>
 </project>

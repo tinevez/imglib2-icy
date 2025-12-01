@@ -1,12 +1,7 @@
-/build*
-/workspace
-setting.xml
-release/
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-icy.log
 
 ### IntelliJ IDEA ###
 .idea/
@@ -39,3 +34,5 @@ build/
 ### Mac OS ###
 **/.DS_Store
 Icon?
+!icons
+!icon.svg
