@@ -6,11 +6,11 @@
     <parent>
         <artifactId>pom-icy</artifactId>
         <groupId>org.bioimageanalysis.icy</groupId>
-        <version>3.0.0-a.5</version>
+        <version>3.0.0-a.6</version>
     </parent>
 
     <artifactId>imglib2-icy</artifactId>
-    <version>8.0.0-a.5</version>
+    <version>8.0.0-a.6</version>
 
     <name>ImgLib2 Icy</name>
     <description>ImgLib2 wrappers for Icy sequences.</description>
@@ -89,33 +89,27 @@
         <dependency>
             <groupId>net.imglib2</groupId>
             <artifactId>imglib2</artifactId>
-            <version>7.1.4</version>
         </dependency>
 
         <dependency>
             <groupId>net.imglib2</groupId>
             <artifactId>imglib2-roi</artifactId>
-            <version>0.15.2</version>
         </dependency>
         <dependency>
             <groupId>net.imglib2</groupId>
             <artifactId>imglib2-realtransform</artifactId>
-            <version>4.0.3</version>
         </dependency>
         <dependency>
             <groupId>net.imglib2</groupId>
             <artifactId>imglib2-algorithm</artifactId>
-            <version>0.9.0</version>
         </dependency>
         <dependency>
             <groupId>net.imglib2</groupId>
             <artifactId>imglib2-algorithm-fft</artifactId>
-            <version>0.2.1</version>
         </dependency>
         <dependency>
             <groupId>net.imglib2</groupId>
             <artifactId>imglib2-algorithm-gpl</artifactId>
-            <version>0.3.1</version>
         </dependency>
         <dependency>
             <groupId>net.imglib2</groupId>
@@ -125,7 +119,6 @@
         <dependency>
             <groupId>net.imglib2</groupId>
             <artifactId>imglib2-cache</artifactId>
-            <version>1.0.0-beta-19</version>
         </dependency>
     </dependencies>
 
