@@ -9,7 +9,7 @@ import net.imglib2.type.numeric.RealType;
 import net.imglib2.type.numeric.integer.*;
 import net.imglib2.type.numeric.real.DoubleType;
 import net.imglib2.type.numeric.real.FloatType;
-import org.bioimageanalysis.icy.model.sequence.Sequence;
+import fr.icy.model.sequence.Sequence;
 import plugins.tinevez.imglib2icy.VirtualSequence.DimensionArrangement;
 
 import java.util.ArrayList;

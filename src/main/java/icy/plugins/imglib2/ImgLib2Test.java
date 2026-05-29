@@ -1,13 +1,16 @@
-package plugins.tinevez.imglib2icy;
+package icy.plugins.imglib2;
 
+import fr.icy.extension.plugin.annotation_.IcyPluginName;
 import net.imglib2.img.Img;
 import net.imglib2.type.numeric.RealType;
 import net.imglib2.util.Util;
-import org.bioimageanalysis.icy.extension.plugin.abstract_.PluginActionable;
-import org.bioimageanalysis.icy.gui.dialog.MessageDialog;
-import org.bioimageanalysis.icy.model.sequence.Sequence;
+import fr.icy.extension.plugin.abstract_.PluginActionable;
+import fr.icy.gui.dialog.MessageDialog;
+import fr.icy.model.sequence.Sequence;
+import plugins.tinevez.imglib2icy.ImgLib2IcyFunctions;
 import plugins.tinevez.imglib2icy.VirtualSequence.DimensionArrangement;
 
+@IcyPluginName( "ImgLib2 Test")
 public class ImgLib2Test< T extends RealType< T > > extends PluginActionable
 {
 

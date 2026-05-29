@@ -3,14 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
+        <groupId>fr.icy</groupId>
         <artifactId>pom-icy</artifactId>
-        <groupId>org.bioimageanalysis.icy</groupId>
-        <version>3.0.0-a.6</version>
+        <version>3.0.0-a.7</version>
     </parent>
 
-    <artifactId>imglib2-icy</artifactId>
-    <version>8.0.0-a.6</version>
+    <groupId>fr.icy.extensions</groupId>
+    <artifactId>imglib2</artifactId>
+    <version>8.0.0-a.7</version>
 
     <name>ImgLib2 Icy</name>
     <description>ImgLib2 wrappers for Icy sequences.</description>
@@ -78,54 +80,58 @@
     <properties>
         <license.licenseName>GNU LGPLv3</license.licenseName>
         <license.copyrightOwners>Institut Pasteur</license.copyrightOwners>
+
+        <imglib2-ui.version>2.0.1</imglib2-ui.version>
+        <net.imglib2.imglib2-ui.version>${imglib2-ui.version}</net.imglib2.imglib2-ui.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>org.bioimageanalysis.icy</groupId>
+            <groupId>fr.icy.extensions</groupId>
             <artifactId>ezplug</artifactId>
+            <version>${fr.icy.extensions.ezplug.version}</version>
         </dependency>
 
         <dependency>
             <groupId>net.imglib2</groupId>
             <artifactId>imglib2</artifactId>
+            <version>${net.imglib2.imglib2.version}</version>
         </dependency>
 
         <dependency>
             <groupId>net.imglib2</groupId>
             <artifactId>imglib2-roi</artifactId>
+            <version>${net.imglib2.imglib2-roi.version}</version>
         </dependency>
         <dependency>
             <groupId>net.imglib2</groupId>
             <artifactId>imglib2-realtransform</artifactId>
+            <version>${net.imglib2.imglib2-realtransform.version}</version>
         </dependency>
         <dependency>
             <groupId>net.imglib2</groupId>
             <artifactId>imglib2-algorithm</artifactId>
+            <version>${imglib2-algorithm.version}</version>
         </dependency>
         <dependency>
             <groupId>net.imglib2</groupId>
             <artifactId>imglib2-algorithm-fft</artifactId>
+            <version>${imglib2-algorithm-fft.version}</version>
         </dependency>
         <dependency>
             <groupId>net.imglib2</groupId>
             <artifactId>imglib2-algorithm-gpl</artifactId>
+            <version>${net.imglib2.imglib2-algorithm-gpl.version}</version>
         </dependency>
         <dependency>
             <groupId>net.imglib2</groupId>
             <artifactId>imglib2-ui</artifactId>
-            <version>2.0.1</version>
+            <version>${net.imglib2.imglib2-ui.version}</version>
         </dependency>
         <dependency>
             <groupId>net.imglib2</groupId>
             <artifactId>imglib2-cache</artifactId>
+            <version>${net.imglib2.imglib2-cache.version}</version>
         </dependency>
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>scijava</id>
-            <url>https://maven.scijava.org/repository/public/</url>
-        </repository>
-    </repositories>
 </project>

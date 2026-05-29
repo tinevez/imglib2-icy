@@ -2,8 +2,8 @@ package plugins.tinevez.imglib2icy;
 
 import java.util.Arrays;
 
-import org.bioimageanalysis.icy.model.image.IcyBufferedImage;
-import org.bioimageanalysis.icy.model.sequence.Sequence;
+import fr.icy.model.image.IcyBufferedImage;
+import fr.icy.model.sequence.Sequence;
 
 import net.imglib2.img.Img;
 import net.imglib2.img.basictypeaccess.array.ByteArray;

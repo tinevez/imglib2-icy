@@ -16,10 +16,10 @@ import net.imglib2.type.numeric.integer.UnsignedByteType;
 import net.imglib2.type.numeric.integer.UnsignedShortType;
 import net.imglib2.type.numeric.real.FloatType;
 import net.imglib2.view.Views;
-import org.bioimageanalysis.icy.common.type.DataType;
-import org.bioimageanalysis.icy.model.image.IcyBufferedImage;
-import org.bioimageanalysis.icy.model.sequence.Sequence;
-import org.bioimageanalysis.icy.model.sequence.VolumetricImage;
+import fr.icy.common.type.DataType;
+import fr.icy.model.image.IcyBufferedImage;
+import fr.icy.model.sequence.Sequence;
+import fr.icy.model.sequence.VolumetricImage;
 
 import java.util.ArrayList;
 import java.util.TreeMap;
