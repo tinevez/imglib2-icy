@@ -7,16 +7,16 @@
     <parent>
         <groupId>fr.icy</groupId>
         <artifactId>pom-icy</artifactId>
-        <version>3.0.0-a.7</version>
+        <version>3.0.0-a.8-SNAPSHOT</version>
     </parent>
 
-    <groupId>fr.icy.extensions</groupId>
+    <groupId>fr.icy.extension</groupId>
     <artifactId>imglib2</artifactId>
-    <version>8.0.0-a.7</version>
+    <version>8.0.0-a.8-SNAPSHOT</version>
 
     <name>ImgLib2 Icy</name>
-    <description>ImgLib2 wrappers for Icy sequences.</description>
-    <url>https://icy.bioimageanalysis.org/</url>
+    <description>ImgLib2 wrappers for Icy sequences</description>
+    <url>http://icy.fr/</url>
     <inceptionYear>2015</inceptionYear>
 
     <scm>
@@ -65,8 +65,15 @@
 
     <contributors>
         <contributor>
+            <name>Jean-Yves Tinevez</name>
+        </contributor>
+        <contributor>
             <name>Carlos Javier Garcia Lopez de Haro</name>
             <url>https://github.com/carlosuc3m</url>
+        </contributor>
+        <contributor>
+            <name>Thomas Musset</name>
+            <properties><id>Azargas</id></properties>
         </contributor>
     </contributors>
 
@@ -87,9 +94,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>fr.icy.extensions</groupId>
+            <groupId>fr.icy.extension</groupId>
             <artifactId>ezplug</artifactId>
-            <version>${fr.icy.extensions.ezplug.version}</version>
+            <version>${fr.icy.extension.ezplug.version}</version>
         </dependency>
 
         <dependency>

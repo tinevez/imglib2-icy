@@ -1,4 +1,4 @@
-![Version 8.0.0 alpha 7](https://img.shields.io/badge/v8.0.0-alpha_7-royalblue)
+![Version 8.0.0 alpha 8](https://img.shields.io/badge/v8.0.0-alpha_8-royalblue)
 ![Java 17+](https://img.shields.io/badge/OpenJDK-17+-5382A1?labelColor=E76F00)
 [![License: LGPL v3](https://img.shields.io/badge/LGPLv3-008033?logo=GPLv3&logoSize=auto)](https://www.gnu.org/licenses/lgpl-3.0)
 [![Twitter](https://img.shields.io/twitter/follow/Icy_BioImaging)](https://x.com/Icy_BioImaging)
@@ -36,9 +36,9 @@ ImgLib2 wrappers for [Icy](https://icy.bioimageanalysis.org/).
 Add this dependency block in your `pom.xml`
 ```xml
 <dependency>
-    <groupId>fr.icy.extensions</groupId>
+    <groupId>fr.icy.extension</groupId>
     <artifactId>imglib2</artifactId>
-    <version>8.0.0-a.7</version>
+    <version>${fr.icy.extension.imglib2.version}</version>
 </dependency>
 ```
 
@@ -52,6 +52,7 @@ https://icy.bioimageanalysis.org
 
 ## Author(s)
 
-- Jean-Yves Tivenez
+- Jean-Yves Tinevez
+- Carlos Javier Garcia Lopez de Haro
 - Thomas Musset
 
