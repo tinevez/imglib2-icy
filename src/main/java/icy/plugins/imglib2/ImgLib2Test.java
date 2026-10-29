@@ -18,7 +18,9 @@
 
 package icy.plugins.imglib2;
 
+import fr.icy.extension.plugin.annotation_.IcyPluginCategory;
 import fr.icy.extension.plugin.annotation_.IcyPluginName;
+import fr.icy.extension.plugin.annotation_.IcyPluginTags;
 import net.imglib2.img.Img;
 import net.imglib2.type.numeric.RealType;
 import net.imglib2.util.Util;
@@ -31,6 +33,8 @@ import plugins.tinevez.imglib2icy.VirtualSequence.DimensionArrangement;
 import javax.swing.*;
 
 @IcyPluginName( "ImgLib2 Test")
+@IcyPluginCategory("ImgLib2")
+@IcyPluginTags({"ImgLib2", "Test"})
 public class ImgLib2Test< T extends RealType< T > > extends PluginActionable
 {
 

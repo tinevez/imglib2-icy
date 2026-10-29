@@ -20,6 +20,9 @@ package plugins.tinevez.imglib2icy;
 
 import java.util.List;
 
+import fr.icy.extension.plugin.annotation_.IcyPluginCategory;
+import fr.icy.extension.plugin.annotation_.IcyPluginName;
+import fr.icy.extension.plugin.annotation_.IcyPluginTags;
 import net.imglib2.img.Img;
 import net.imglib2.type.numeric.NumericType;
 import net.imglib2.type.numeric.RealType;
@@ -31,6 +34,9 @@ import plugins.tinevez.imglib2icy.VirtualSequence.DimensionArrangement;
 
 import javax.swing.*;
 
+@IcyPluginName("ImgLib2 Sequence Splitter")
+@IcyPluginCategory("Sequence")
+@IcyPluginTags({"EzPlug", "ImgLib2", "Sequence", "Split"})
 public class ImgLib2SequenceSplitter< T extends NumericType< T > & RealType< T > > extends EzPlug
 {
 
